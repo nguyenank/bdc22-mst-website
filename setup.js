@@ -134,6 +134,12 @@ function setUpPointSet(points, color) {
     update(points, pointsTranslation, color);
 
     interact("." + color + "-dot").draggable({
+        modifiers: [
+            interact.modifiers.restrictRect({
+                restriction: "#transformations",
+                // endOnly: true
+            }),
+        ],
         listeners: {
             move(event) {
                 // regen root Matrix to account for window size changes
