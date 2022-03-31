@@ -42,3 +42,12 @@ line {
     stroke: $orange;
   }
 }
+
+#custom-bar {
+  display: flex;
+  justify-content: space-around;
+
+  h3 {
+    text-transform: capitalize;
+  }
+}

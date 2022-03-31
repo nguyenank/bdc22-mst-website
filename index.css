@@ -33,4 +33,12 @@ line.orange {
   stroke: rgba(234, 142, 72, 0.7);
 }
 
+#custom-bar {
+  display: flex;
+  justify-content: space-around;
+}
+#custom-bar h3 {
+  text-transform: capitalize;
+}
+
 /*# sourceMappingURL=index.css.map */

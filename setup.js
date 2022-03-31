@@ -10,6 +10,7 @@ function mst(points) {
     const N = points.length;
     // create adjacency matrix
     let edges = [];
+    let min_total = 0;
     let am = [];
     for (let pointA of points) {
         let row = [];
@@ -46,25 +47,35 @@ function mst(points) {
         }
         selected_node[b] = true;
         no_edge += 1;
+        min_total += minimum;
         edges.push([points[a].id, points[b].id]);
     }
-    return edges;
+    return [edges, min_total];
 }
 
-function lines(points, pointsTranslation, color) {
+function update(points, pointsTranslation, color) {
     let shifted = _.map(_.zip(points, pointsTranslation), ([p, s]) => ({
         id: p.id,
         x: p.x + s.x,
         y: p.y + s.y,
     }));
 
-    const edges = mst(shifted);
+    const [edges, min_total] = mst(shifted);
+    console.log(edges);
+    console.log(min_total);
+
+    d3.select("#custom-bar")
+        .select("#" + color)
+        .select("p")
+        .text(min_total.toFixed(2) + "ft");
 
     d3.select("#" + color)
         .select("#mst")
         .selectAll("*")
         .remove();
-    d3.select("#" + color)
+
+    d3.select("#transformations")
+        .select("#" + color)
         .select("#mst")
         .selectAll("line")
         .data(edges)
@@ -82,6 +93,12 @@ function setUpPointSet(points, color) {
         x: 0,
         y: 0,
     }));
+
+    d3.select("#transformations")
+        .attr("clip-path", "url(#clipBorder)")
+        .select("#" + color)
+        .selectAll("*")
+        .remove();
 
     let colorG = d3
         .select("#transformations")
@@ -103,7 +120,7 @@ function setUpPointSet(points, color) {
         .attr("r", 3)
         .attr("class", color);
 
-    lines(points, pointsTranslation, color);
+    update(points, pointsTranslation, color);
 
     interact("." + color).draggable({
         listeners: {
@@ -121,7 +138,7 @@ function setUpPointSet(points, color) {
                     }
                     return point;
                 });
-                lines(points, pointsTranslation, color);
+                update(points, pointsTranslation, color);
                 d3.select(event.target).attr(
                     "transform",
                     `translate(${x}, ${y})`
@@ -144,6 +161,12 @@ export function setup() {
 
     bluePoints = bluePoints.map(coordTransform);
     orangePoints = orangePoints.map(coordTransform);
+
+    for (const color of ["blue", "orange"]) {
+        let widget = d3.select("#custom-bar").append("div").attr("id", color);
+        widget.append("h3").text(color);
+        widget.append("p").text("0 ft");
+    }
 
     setUpPointSet(bluePoints, "blue");
     setUpPointSet(orangePoints, "orange");
