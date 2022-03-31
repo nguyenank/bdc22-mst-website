@@ -1,18 +1,5 @@
-let points = [
-    { x: -40, y: 25, id: "b1" },
-    { x: -40, y: -25, id: "b2" },
-    { x: -40, y: 0, id: "b3" },
-    { x: -70, y: 12.5, id: "b4" },
-    { x: -70, y: -12.5, id: "b5" },
-];
-
-let pointsTranslation = [
-    { x: 0, y: 0, id: "b1" },
-    { x: 0, y: 0, id: "b2" },
-    { x: 0, y: 0, id: "b3" },
-    { x: 0, y: 0, id: "b4" },
-    { x: 0, y: 0, id: "b5" },
-];
+const root = d3.select("#ice-hockey-svg");
+let rootMatrix;
 
 function coordTransform(point) {
     return { ...point, x: point.x + 100, y: 42.5 - point.y };
@@ -64,7 +51,7 @@ function mst(points) {
     return edges;
 }
 
-function lines() {
+function lines(points, pointsTranslation, color) {
     let shifted = _.map(_.zip(points, pointsTranslation), ([p, s]) => ({
         id: p.id,
         x: p.x + s.x,
@@ -73,8 +60,12 @@ function lines() {
 
     const edges = mst(shifted);
 
-    d3.select("#mst").selectAll("*").remove();
-    d3.select("#mst")
+    d3.select("#" + color)
+        .select("#mst")
+        .selectAll("*")
+        .remove();
+    d3.select("#" + color)
+        .select("#mst")
         .selectAll("line")
         .data(edges)
         .join("line")
@@ -82,20 +73,25 @@ function lines() {
         .attr("y1", (d) => _.find(shifted, ["id", d[0]]).y)
         .attr("x2", (d) => _.find(shifted, ["id", d[1]]).x)
         .attr("y2", (d) => _.find(shifted, ["id", d[1]]).y)
-        .attr("stroke", "black")
-        .attr("stroke-width", "1");
+        .attr("class", color);
 }
 
-points = points.map(coordTransform);
+function setUpPointSet(points, color) {
+    let pointsTranslation = _.map(points, (p) => ({
+        id: p.id,
+        x: 0,
+        y: 0,
+    }));
 
-const root = d3.select("#ice-hockey-svg");
-let rootMatrix;
-
-export function setup() {
-    d3.select("#transformations").append("g").attr("id", "mst");
-    let dots = d3
+    let colorG = d3
         .select("#transformations")
         .attr("clip-path", "url(#clipBorder)")
+        .append("g")
+        .attr("id", color);
+
+    colorG.append("g").attr("id", "mst");
+
+    colorG
         .append("g")
         .attr("id", "dots")
         .selectAll("dot")
@@ -105,16 +101,12 @@ export function setup() {
         .attr("cy", (d) => d.y)
         .attr("data-id", (d) => d.id)
         .attr("r", 3)
-        .style("fill", "blue")
-        .attr("class", "dot");
+        .attr("class", color);
 
-    lines(points);
+    lines(points, pointsTranslation, color);
 
-    interact(".dot").draggable({
+    interact("." + color).draggable({
         listeners: {
-            start(event) {
-                console.log(event.type, event.target);
-            },
             move(event) {
                 // regen root Matrix to account for window size changes
                 rootMatrix = root.node().getScreenCTM();
@@ -129,24 +121,30 @@ export function setup() {
                     }
                     return point;
                 });
-                lines();
+                lines(points, pointsTranslation, color);
                 d3.select(event.target).attr(
                     "transform",
                     `translate(${x}, ${y})`
                 );
             },
-            end(event) {
-                console.log();
-            },
         },
     });
+}
 
-    // interact(".dot").draggable({
-    //     inertia: false,
-    //     autoScroll: false,
-    //     listeners: {
-    //         // call this function on every dragmove event
-    //         move: dragMoveListener,
-    //     },
-    // });
+export function setup() {
+    let bluePoints = [
+        { x: -40, y: 25, id: "b1" },
+        { x: -40, y: -25, id: "b2" },
+        { x: -40, y: 0, id: "b3" },
+        { x: -70, y: 12.5, id: "b4" },
+        { x: -70, y: -12.5, id: "b5" },
+    ];
+
+    let orangePoints = bluePoints.map((p) => ({ ...p, x: p.x * -1 }));
+
+    bluePoints = bluePoints.map(coordTransform);
+    orangePoints = orangePoints.map(coordTransform);
+
+    setUpPointSet(bluePoints, "blue");
+    setUpPointSet(orangePoints, "orange");
 }

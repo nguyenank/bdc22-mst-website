@@ -16,4 +16,21 @@ h1 {
   margin-top: 0.25rem;
 }
 
+circle.blue {
+  fill: #35aba9;
+}
+circle.orange {
+  fill: #ea8e48;
+}
+
+line {
+  stroke-width: 0.7;
+}
+line.blue {
+  stroke: rgba(53, 171, 169, 0.7);
+}
+line.orange {
+  stroke: rgba(234, 142, 72, 0.7);
+}
+
 /*# sourceMappingURL=index.css.map */

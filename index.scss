@@ -1,3 +1,8 @@
+$blue: rgba(53, 171, 169, 0.7);
+$blue-solid: rgba(53, 171, 169, 1);
+$orange: rgba(234, 142, 72, 0.7);
+$orange-solid: rgba(234, 142, 72, 1);
+
 html {
   font-family: "Public Sans";
 }
@@ -14,4 +19,26 @@ footer {
 h1 {
   margin-bottom: 0.5rem;
   margin-top: 0.25rem;
+}
+
+circle {
+  &.blue {
+    fill: $blue-solid;
+  }
+
+  &.orange {
+    fill: $orange-solid;
+  }
+}
+
+line {
+  stroke-width: 0.7;
+
+  &.blue {
+    stroke: $blue;
+  }
+
+  &.orange {
+    stroke: $orange;
+  }
 }
