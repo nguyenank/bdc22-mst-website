@@ -61,15 +61,14 @@ function update(points, pointsTranslation, color) {
     }));
 
     const [edges, min_total] = mst(shifted);
-    console.log(edges);
-    console.log(min_total);
 
     d3.select("#custom-bar")
         .select("#" + color)
         .select("p")
         .text(min_total.toFixed(2) + "ft");
 
-    d3.select("#" + color)
+    d3.select("#transformations")
+        .select("#" + color)
         .select("#mst")
         .selectAll("*")
         .remove();
@@ -103,26 +102,38 @@ function setUpPointSet(points, color) {
     let colorG = d3
         .select("#transformations")
         .attr("clip-path", "url(#clipBorder)")
-        .append("g")
-        .attr("id", color);
+        .select("#" + color);
 
     colorG.append("g").attr("id", "mst");
 
-    colorG
+    let dots = colorG
         .append("g")
         .attr("id", "dots")
         .selectAll("dot")
         .data(points)
-        .join("circle")
-        .attr("cx", (d) => d.x)
-        .attr("cy", (d) => d.y)
+        .join("g")
+        .attr("class", color + "-dot")
         .attr("data-id", (d) => d.id)
-        .attr("r", 3)
-        .attr("class", color);
+        .each(function (d) {
+            d3.select(this)
+                .append("circle")
+                .attr("cx", d.x)
+                .attr("cy", d.y)
+                .attr("r", 3)
+                .attr("class", color);
+            d3.select(this)
+                .append("text")
+                .attr("x", d.x)
+                .attr("y", d.y)
+                .attr("text-anchor", "middle")
+                .attr("dominant-baseline", "middle")
+                .attr("class", "dot-text")
+                .text(d.id);
+        });
 
     update(points, pointsTranslation, color);
 
-    interact("." + color).draggable({
+    interact("." + color + "-dot").draggable({
         listeners: {
             move(event) {
                 // regen root Matrix to account for window size changes
@@ -150,11 +161,12 @@ function setUpPointSet(points, color) {
 
 export function setup() {
     let bluePoints = [
-        { x: -40, y: 25, id: "b1" },
-        { x: -40, y: -25, id: "b2" },
-        { x: -40, y: 0, id: "b3" },
-        { x: -70, y: 12.5, id: "b4" },
-        { x: -70, y: -12.5, id: "b5" },
+        { x: -40, y: 25, id: "A" },
+        { x: -40, y: -25, id: "B" },
+        { x: -40, y: 0, id: "C" },
+        { x: -70, y: 12.5, id: "D" },
+        { x: -70, y: -12.5, id: "E" },
+        { x: -55, y: 0, id: "F" },
     ];
 
     let orangePoints = bluePoints.map((p) => ({ ...p, x: p.x * -1 }));
@@ -162,12 +174,44 @@ export function setup() {
     bluePoints = bluePoints.map(coordTransform);
     orangePoints = orangePoints.map(coordTransform);
 
-    for (const color of ["blue", "orange"]) {
+    for (const [color, points] of [
+        ["blue", bluePoints],
+        ["orange", orangePoints],
+    ]) {
         let widget = d3.select("#custom-bar").append("div").attr("id", color);
-        widget.append("h3").text(color);
-        widget.append("p").text("0 ft");
-    }
+        widget.append("h3").attr("class", color).text(color);
 
-    setUpPointSet(bluePoints, "blue");
-    setUpPointSet(orangePoints, "orange");
+        let colorG = d3
+            .select("#transformations")
+            .attr("clip-path", "url(#clipBorder)")
+            .append("g")
+            .attr("id", color);
+
+        widget
+            .append("label")
+            .attr("for", color + "-select")
+            .text("# Players");
+
+        let select = widget
+            .append("select")
+            .attr("name", color + "-select")
+            .attr("id", color + "-select");
+
+        for (let i = 0; i <= 6; i += 1) {
+            select
+                .append("option")
+                .attr("value", i)
+                .text(i)
+                .property("selected", i === 5);
+        }
+
+        select.on("change", function () {
+            const value = d3.select(this).property("value");
+            setUpPointSet(_.slice(points, 0, value), color);
+        });
+
+        widget.append("p").text("0 ft");
+
+        setUpPointSet(_.slice(points, 0, 5), color);
+    }
 }

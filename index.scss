@@ -1,7 +1,7 @@
-$blue: rgba(53, 171, 169, 0.7);
-$blue-solid: rgba(53, 171, 169, 1);
-$orange: rgba(234, 142, 72, 0.7);
-$orange-solid: rgba(234, 142, 72, 1);
+$blue-translucent: rgba(53, 171, 169, 0.6);
+$blue: rgba(53, 171, 169, 1);
+$orange-translucent: rgba(234, 142, 72, 0.6);
+$orange: rgba(234, 142, 72, 1);
 
 html {
   font-family: "Public Sans";
@@ -23,23 +23,29 @@ h1 {
 
 circle {
   &.blue {
-    fill: $blue-solid;
+    fill: $blue;
   }
 
   &.orange {
-    fill: $orange-solid;
+    fill: $orange;
   }
+}
+
+.dot-text {
+  fill: white;
+  font-size: 0.25rem;
+  font-weight: bold;
 }
 
 line {
   stroke-width: 0.7;
 
   &.blue {
-    stroke: $blue;
+    stroke: $blue-translucent;
   }
 
   &.orange {
-    stroke: $orange;
+    stroke: $orange-translucent;
   }
 }
 
@@ -49,5 +55,23 @@ line {
 
   h3 {
     text-transform: capitalize;
+    text-decoration: underline;
+
+    &.blue {
+      text-decoration-color: $blue;
+    }
+
+    &.orange {
+      text-decoration-color: $orange;
+    }
+  }
+
+  select {
+    font-family: "Public Sans";
+    width: 100%;
+  }
+
+  label {
+    font-weight: 600;
   }
 }

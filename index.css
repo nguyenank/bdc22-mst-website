@@ -23,14 +23,20 @@ circle.orange {
   fill: #ea8e48;
 }
 
+.dot-text {
+  fill: white;
+  font-size: 0.25rem;
+  font-weight: bold;
+}
+
 line {
   stroke-width: 0.7;
 }
 line.blue {
-  stroke: rgba(53, 171, 169, 0.7);
+  stroke: rgba(53, 171, 169, 0.6);
 }
 line.orange {
-  stroke: rgba(234, 142, 72, 0.7);
+  stroke: rgba(234, 142, 72, 0.6);
 }
 
 #custom-bar {
@@ -39,6 +45,20 @@ line.orange {
 }
 #custom-bar h3 {
   text-transform: capitalize;
+  text-decoration: underline;
+}
+#custom-bar h3.blue {
+  text-decoration-color: #35aba9;
+}
+#custom-bar h3.orange {
+  text-decoration-color: #ea8e48;
+}
+#custom-bar select {
+  font-family: "Public Sans";
+  width: 100%;
+}
+#custom-bar label {
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=index.css.map */
