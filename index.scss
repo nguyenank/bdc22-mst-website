@@ -3,6 +3,7 @@ $blue: rgba(53, 171, 169, 1);
 $orange-translucent: rgba(234, 142, 72, 0.4);
 $orange: rgba(234, 142, 72, 1);
 $grey-translucent: rgba(40, 40, 40, 0.4);
+$grey: rgb(150,150,150);
 
 html {
   font-family: "Public Sans";
@@ -79,19 +80,21 @@ line {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
   margin: 1rem;
   padding: 1rem;
   border: 2px black solid;
 
-  * {
-    min-width: 40%;
-    max-width: 80%;
+  > * {
+    border-bottom: 1px black solid;
+    padding: 0 1rem;
+    margin-top: 1rem;
   }
 
   h3 {
     text-transform: capitalize;
     text-decoration: underline;
+    margin-top: 0;
+    margin-bottom: 0.2rem;
 
     &.blue {
       text-decoration-color: $blue;
@@ -99,6 +102,10 @@ line {
 
     &.orange {
       text-decoration-color: $orange;
+    }
+
+    &.overall {
+      text-decoration-color: $grey;
     }
   }
 
@@ -109,6 +116,13 @@ line {
 
   label {
     font-weight: 600;
+    display: flex;
+    gap: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  #second-last-shot-widget {
+    padding-bottom: 1rem;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -129,5 +143,11 @@ line {
     flex-direction: row;
     justify-content: flex-start;
     overflow-x: auto;
+
+    > * {
+      border-bottom: 0;
+      border-right: 1px black solid;
+      margin-right: 1rem;
+    }
   }
 }

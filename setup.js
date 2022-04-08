@@ -243,9 +243,6 @@ function setUpPointSet(points, color) {
 }
 
 export function setup() {
-    let widget = d3.select("#custom-bar").append("div").attr("id", "overall");
-    widget.append("h3").attr("class", "overall").text("Overall");
-
     let overallG = d3
         .select("#transformations")
         .attr("clip-path", "url(#clipBorder)")
@@ -253,15 +250,14 @@ export function setup() {
         .attr("id", "overall")
         .append("g")
         .attr("id", "mst");
-
-    widget.append("p").text("0 ft");
-
     for (const color in all_points) {
         const points = all_points[color].original;
         let widget = d3.select("#custom-bar").append("div").attr("id", color);
+
         widget
             .append("h3")
             .attr("class", color)
+            .style("display", "inline-block")
             .text(color === "blue" ? "Offensive" : "Defensive");
 
         let colorG = d3
@@ -270,12 +266,10 @@ export function setup() {
             .append("g")
             .attr("id", color);
 
-        widget
+        let select = widget
             .append("label")
             .attr("for", color + "-select")
-            .text("# Players:");
-
-        let select = widget
+            .text("# Players:")
             .append("select")
             .attr("name", color + "-select")
             .attr("id", color + "-select");
@@ -303,14 +297,67 @@ export function setup() {
             setUpPointSet(all_points[color].original, color);
         });
 
+        widget
+            .append("label")
+            .attr("for", color + "-show-mst")
+            .text("Show MST")
+            .append("input")
+            .attr("type", "checkbox")
+            .attr("id", color + "-show-mst")
+            .property("checked", true)
+            .on("click", function () {
+                if (d3.select(this).property("checked")) {
+                    d3.select("#transformations")
+                        .select("#" + color)
+                        .select("#mst")
+                        .style("visibility", "visible");
+                } else {
+                    d3.select("#transformations")
+                        .select("#" + color)
+                        .select("#mst")
+                        .style("visibility", "hidden");
+                }
+            });
+
         widget.append("p").text("0 ft");
 
         setUpPointSet(_.slice(points, 0, 5), color);
     }
 
+    let widget = d3.select("#custom-bar").append("div").attr("id", "overall");
+    widget.append("h3").attr("class", "overall").text("Overall");
+
+    widget
+        .append("label")
+        .attr("for", "overall-show-mst")
+        .text("Show MST")
+        .append("input")
+        .attr("type", "checkbox")
+        .attr("id", "overall-show-mst")
+        .property("checked", true)
+        .on("click", function () {
+            if (d3.select(this).property("checked")) {
+                d3.select("#transformations")
+                    .select("#overall")
+                    .select("#mst")
+                    .style("visibility", "visible");
+            } else {
+                d3.select("#transformations")
+                    .select("#overall")
+                    .select("#mst")
+                    .style("visibility", "hidden");
+            }
+        });
+
+    widget.append("p").text("0 ft");
+
+    update("blue");
+
     const sls = d3
         .select("#custom-bar")
-        .append("div", "second-last-shot-widget");
+        .append("div")
+        .attr("id", "second-last-shot-widget");
+    sls.append("h3").text("Other");
     sls.append("label")
         .attr("id", "seconds-last-shot-label")
         .attr("for", "seconds-last-shot")
@@ -321,22 +368,25 @@ export function setup() {
         .attr("type", "range")
         .attr("min", 0)
         .attr("max", 120)
-        .attr("value", secondsLastShot)
+        .property("value", secondsLastShot)
         .on("change", (e) => {
             secondsLastShot = e.target.value;
-            d3.select("#seconds-last-shot-box").attr("value", secondsLastShot);
+            d3.select("#seconds-last-shot-box").property(
+                "value",
+                e.target.value
+            );
         });
     sls.append("input")
         .attr("type", "number")
         .attr("id", "seconds-last-shot-box")
         .attr("min", 0)
         .attr("max", 120)
-        .attr("value", secondsLastShot)
+        .property("value", secondsLastShot)
         .on("change", (e) => {
             secondsLastShot = e.target.value;
-            d3.select("#seconds-last-shot-range").attr(
+            d3.select("#seconds-last-shot-range").property(
                 "value",
-                secondsLastShot
+                e.target.value
             );
         });
 }
