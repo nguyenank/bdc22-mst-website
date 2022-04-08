@@ -9,7 +9,7 @@ html {
 }
 
 #ice-hockey-svg {
-  max-height: 80vh;
+  height: 80vh;
   touch-action: none;
 }
 
@@ -113,21 +113,20 @@ line {
   }
 }
 @media only screen and (max-width: 600px) {
-  html {
-    overflow: scroll;
+  .layout {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
   }
 
-  .layout {
-    display: block;
+  #ice-hockey-svg {
+    height: auto;
+    width: 90%;
   }
 
   #custom-bar {
     flex-direction: row;
     justify-content: flex-start;
     overflow-x: auto;
-
-    * {
-      width: min-content;
-    }
   }
 }
