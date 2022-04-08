@@ -2,6 +2,11 @@ html {
   font-family: "Public Sans";
 }
 
+#ice-hockey-svg {
+  max-height: 80vh;
+  touch-action: none;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -23,25 +28,54 @@ circle.orange {
   fill: #ea8e48;
 }
 
+.stick {
+  stroke-width: 0.3;
+  stroke: #444;
+  fill: transparent;
+}
+
+.stick-head {
+  stroke-width: 0.5;
+  stroke: #ccc;
+  fill: transparent;
+}
+
 .dot-text {
   fill: white;
   font-size: 0.25rem;
   font-weight: bold;
 }
 
+.layout {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
 line {
   stroke-width: 0.7;
 }
 line.blue {
-  stroke: rgba(53, 171, 169, 0.6);
+  stroke: rgba(53, 171, 169, 0.4);
 }
 line.orange {
-  stroke: rgba(234, 142, 72, 0.6);
+  stroke: rgba(234, 142, 72, 0.4);
+}
+line.overall {
+  stroke: rgba(40, 40, 40, 0.4);
 }
 
 #custom-bar {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  align-items: center;
+  margin: 1rem;
+  padding: 1rem;
+  border: 2px black solid;
+}
+#custom-bar * {
+  min-width: 40%;
+  max-width: 80%;
 }
 #custom-bar h3 {
   text-transform: capitalize;
@@ -55,10 +89,29 @@ line.orange {
 }
 #custom-bar select {
   font-family: "Public Sans";
-  width: 100%;
+  margin-left: 0.5rem;
 }
 #custom-bar label {
   font-weight: 600;
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    overflow: scroll;
+  }
+
+  .layout {
+    display: block;
+  }
+
+  #custom-bar {
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+  #custom-bar * {
+    width: min-content;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
