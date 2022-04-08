@@ -2,14 +2,13 @@ html {
   font-family: "Public Sans";
 }
 
-#ice-hockey-svg {
-  height: 80vh;
-  touch-action: none;
-}
-
 .center {
   display: flex;
   justify-content: center;
+}
+
+#ice-hockey-svg {
+  max-height: 80vh;
 }
 
 footer {
@@ -97,14 +96,16 @@ line.overall {
 
 @media only screen and (max-width: 600px) {
   .layout {
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
+    display: block;
+  }
+
+  .center {
+    display: block;
   }
 
   #ice-hockey-svg {
-    height: auto;
-    width: 90%;
+    width: 90vw;
+    touch-action: none;
   }
 
   #custom-bar {
