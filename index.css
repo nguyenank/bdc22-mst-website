@@ -105,6 +105,2414 @@ line.overall {
   padding-bottom: 1rem;
 }
 
+#probability-widget {
+  text-align: center;
+  font-size: 1.2rem;
+}
+#probability-widget p.weight-100 {
+  font-weight: 100;
+}
+#probability-widget p.weight-101 {
+  font-weight: 101;
+}
+#probability-widget p.weight-102 {
+  font-weight: 102;
+}
+#probability-widget p.weight-103 {
+  font-weight: 103;
+}
+#probability-widget p.weight-104 {
+  font-weight: 104;
+}
+#probability-widget p.weight-105 {
+  font-weight: 105;
+}
+#probability-widget p.weight-106 {
+  font-weight: 106;
+}
+#probability-widget p.weight-107 {
+  font-weight: 107;
+}
+#probability-widget p.weight-108 {
+  font-weight: 108;
+}
+#probability-widget p.weight-109 {
+  font-weight: 109;
+}
+#probability-widget p.weight-110 {
+  font-weight: 110;
+}
+#probability-widget p.weight-111 {
+  font-weight: 111;
+}
+#probability-widget p.weight-112 {
+  font-weight: 112;
+}
+#probability-widget p.weight-113 {
+  font-weight: 113;
+}
+#probability-widget p.weight-114 {
+  font-weight: 114;
+}
+#probability-widget p.weight-115 {
+  font-weight: 115;
+}
+#probability-widget p.weight-116 {
+  font-weight: 116;
+}
+#probability-widget p.weight-117 {
+  font-weight: 117;
+}
+#probability-widget p.weight-118 {
+  font-weight: 118;
+}
+#probability-widget p.weight-119 {
+  font-weight: 119;
+}
+#probability-widget p.weight-120 {
+  font-weight: 120;
+}
+#probability-widget p.weight-121 {
+  font-weight: 121;
+}
+#probability-widget p.weight-122 {
+  font-weight: 122;
+}
+#probability-widget p.weight-123 {
+  font-weight: 123;
+}
+#probability-widget p.weight-124 {
+  font-weight: 124;
+}
+#probability-widget p.weight-125 {
+  font-weight: 125;
+}
+#probability-widget p.weight-126 {
+  font-weight: 126;
+}
+#probability-widget p.weight-127 {
+  font-weight: 127;
+}
+#probability-widget p.weight-128 {
+  font-weight: 128;
+}
+#probability-widget p.weight-129 {
+  font-weight: 129;
+}
+#probability-widget p.weight-130 {
+  font-weight: 130;
+}
+#probability-widget p.weight-131 {
+  font-weight: 131;
+}
+#probability-widget p.weight-132 {
+  font-weight: 132;
+}
+#probability-widget p.weight-133 {
+  font-weight: 133;
+}
+#probability-widget p.weight-134 {
+  font-weight: 134;
+}
+#probability-widget p.weight-135 {
+  font-weight: 135;
+}
+#probability-widget p.weight-136 {
+  font-weight: 136;
+}
+#probability-widget p.weight-137 {
+  font-weight: 137;
+}
+#probability-widget p.weight-138 {
+  font-weight: 138;
+}
+#probability-widget p.weight-139 {
+  font-weight: 139;
+}
+#probability-widget p.weight-140 {
+  font-weight: 140;
+}
+#probability-widget p.weight-141 {
+  font-weight: 141;
+}
+#probability-widget p.weight-142 {
+  font-weight: 142;
+}
+#probability-widget p.weight-143 {
+  font-weight: 143;
+}
+#probability-widget p.weight-144 {
+  font-weight: 144;
+}
+#probability-widget p.weight-145 {
+  font-weight: 145;
+}
+#probability-widget p.weight-146 {
+  font-weight: 146;
+}
+#probability-widget p.weight-147 {
+  font-weight: 147;
+}
+#probability-widget p.weight-148 {
+  font-weight: 148;
+}
+#probability-widget p.weight-149 {
+  font-weight: 149;
+}
+#probability-widget p.weight-150 {
+  font-weight: 150;
+}
+#probability-widget p.weight-151 {
+  font-weight: 151;
+}
+#probability-widget p.weight-152 {
+  font-weight: 152;
+}
+#probability-widget p.weight-153 {
+  font-weight: 153;
+}
+#probability-widget p.weight-154 {
+  font-weight: 154;
+}
+#probability-widget p.weight-155 {
+  font-weight: 155;
+}
+#probability-widget p.weight-156 {
+  font-weight: 156;
+}
+#probability-widget p.weight-157 {
+  font-weight: 157;
+}
+#probability-widget p.weight-158 {
+  font-weight: 158;
+}
+#probability-widget p.weight-159 {
+  font-weight: 159;
+}
+#probability-widget p.weight-160 {
+  font-weight: 160;
+}
+#probability-widget p.weight-161 {
+  font-weight: 161;
+}
+#probability-widget p.weight-162 {
+  font-weight: 162;
+}
+#probability-widget p.weight-163 {
+  font-weight: 163;
+}
+#probability-widget p.weight-164 {
+  font-weight: 164;
+}
+#probability-widget p.weight-165 {
+  font-weight: 165;
+}
+#probability-widget p.weight-166 {
+  font-weight: 166;
+}
+#probability-widget p.weight-167 {
+  font-weight: 167;
+}
+#probability-widget p.weight-168 {
+  font-weight: 168;
+}
+#probability-widget p.weight-169 {
+  font-weight: 169;
+}
+#probability-widget p.weight-170 {
+  font-weight: 170;
+}
+#probability-widget p.weight-171 {
+  font-weight: 171;
+}
+#probability-widget p.weight-172 {
+  font-weight: 172;
+}
+#probability-widget p.weight-173 {
+  font-weight: 173;
+}
+#probability-widget p.weight-174 {
+  font-weight: 174;
+}
+#probability-widget p.weight-175 {
+  font-weight: 175;
+}
+#probability-widget p.weight-176 {
+  font-weight: 176;
+}
+#probability-widget p.weight-177 {
+  font-weight: 177;
+}
+#probability-widget p.weight-178 {
+  font-weight: 178;
+}
+#probability-widget p.weight-179 {
+  font-weight: 179;
+}
+#probability-widget p.weight-180 {
+  font-weight: 180;
+}
+#probability-widget p.weight-181 {
+  font-weight: 181;
+}
+#probability-widget p.weight-182 {
+  font-weight: 182;
+}
+#probability-widget p.weight-183 {
+  font-weight: 183;
+}
+#probability-widget p.weight-184 {
+  font-weight: 184;
+}
+#probability-widget p.weight-185 {
+  font-weight: 185;
+}
+#probability-widget p.weight-186 {
+  font-weight: 186;
+}
+#probability-widget p.weight-187 {
+  font-weight: 187;
+}
+#probability-widget p.weight-188 {
+  font-weight: 188;
+}
+#probability-widget p.weight-189 {
+  font-weight: 189;
+}
+#probability-widget p.weight-190 {
+  font-weight: 190;
+}
+#probability-widget p.weight-191 {
+  font-weight: 191;
+}
+#probability-widget p.weight-192 {
+  font-weight: 192;
+}
+#probability-widget p.weight-193 {
+  font-weight: 193;
+}
+#probability-widget p.weight-194 {
+  font-weight: 194;
+}
+#probability-widget p.weight-195 {
+  font-weight: 195;
+}
+#probability-widget p.weight-196 {
+  font-weight: 196;
+}
+#probability-widget p.weight-197 {
+  font-weight: 197;
+}
+#probability-widget p.weight-198 {
+  font-weight: 198;
+}
+#probability-widget p.weight-199 {
+  font-weight: 199;
+}
+#probability-widget p.weight-200 {
+  font-weight: 200;
+}
+#probability-widget p.weight-201 {
+  font-weight: 201;
+}
+#probability-widget p.weight-202 {
+  font-weight: 202;
+}
+#probability-widget p.weight-203 {
+  font-weight: 203;
+}
+#probability-widget p.weight-204 {
+  font-weight: 204;
+}
+#probability-widget p.weight-205 {
+  font-weight: 205;
+}
+#probability-widget p.weight-206 {
+  font-weight: 206;
+}
+#probability-widget p.weight-207 {
+  font-weight: 207;
+}
+#probability-widget p.weight-208 {
+  font-weight: 208;
+}
+#probability-widget p.weight-209 {
+  font-weight: 209;
+}
+#probability-widget p.weight-210 {
+  font-weight: 210;
+}
+#probability-widget p.weight-211 {
+  font-weight: 211;
+}
+#probability-widget p.weight-212 {
+  font-weight: 212;
+}
+#probability-widget p.weight-213 {
+  font-weight: 213;
+}
+#probability-widget p.weight-214 {
+  font-weight: 214;
+}
+#probability-widget p.weight-215 {
+  font-weight: 215;
+}
+#probability-widget p.weight-216 {
+  font-weight: 216;
+}
+#probability-widget p.weight-217 {
+  font-weight: 217;
+}
+#probability-widget p.weight-218 {
+  font-weight: 218;
+}
+#probability-widget p.weight-219 {
+  font-weight: 219;
+}
+#probability-widget p.weight-220 {
+  font-weight: 220;
+}
+#probability-widget p.weight-221 {
+  font-weight: 221;
+}
+#probability-widget p.weight-222 {
+  font-weight: 222;
+}
+#probability-widget p.weight-223 {
+  font-weight: 223;
+}
+#probability-widget p.weight-224 {
+  font-weight: 224;
+}
+#probability-widget p.weight-225 {
+  font-weight: 225;
+}
+#probability-widget p.weight-226 {
+  font-weight: 226;
+}
+#probability-widget p.weight-227 {
+  font-weight: 227;
+}
+#probability-widget p.weight-228 {
+  font-weight: 228;
+}
+#probability-widget p.weight-229 {
+  font-weight: 229;
+}
+#probability-widget p.weight-230 {
+  font-weight: 230;
+}
+#probability-widget p.weight-231 {
+  font-weight: 231;
+}
+#probability-widget p.weight-232 {
+  font-weight: 232;
+}
+#probability-widget p.weight-233 {
+  font-weight: 233;
+}
+#probability-widget p.weight-234 {
+  font-weight: 234;
+}
+#probability-widget p.weight-235 {
+  font-weight: 235;
+}
+#probability-widget p.weight-236 {
+  font-weight: 236;
+}
+#probability-widget p.weight-237 {
+  font-weight: 237;
+}
+#probability-widget p.weight-238 {
+  font-weight: 238;
+}
+#probability-widget p.weight-239 {
+  font-weight: 239;
+}
+#probability-widget p.weight-240 {
+  font-weight: 240;
+}
+#probability-widget p.weight-241 {
+  font-weight: 241;
+}
+#probability-widget p.weight-242 {
+  font-weight: 242;
+}
+#probability-widget p.weight-243 {
+  font-weight: 243;
+}
+#probability-widget p.weight-244 {
+  font-weight: 244;
+}
+#probability-widget p.weight-245 {
+  font-weight: 245;
+}
+#probability-widget p.weight-246 {
+  font-weight: 246;
+}
+#probability-widget p.weight-247 {
+  font-weight: 247;
+}
+#probability-widget p.weight-248 {
+  font-weight: 248;
+}
+#probability-widget p.weight-249 {
+  font-weight: 249;
+}
+#probability-widget p.weight-250 {
+  font-weight: 250;
+}
+#probability-widget p.weight-251 {
+  font-weight: 251;
+}
+#probability-widget p.weight-252 {
+  font-weight: 252;
+}
+#probability-widget p.weight-253 {
+  font-weight: 253;
+}
+#probability-widget p.weight-254 {
+  font-weight: 254;
+}
+#probability-widget p.weight-255 {
+  font-weight: 255;
+}
+#probability-widget p.weight-256 {
+  font-weight: 256;
+}
+#probability-widget p.weight-257 {
+  font-weight: 257;
+}
+#probability-widget p.weight-258 {
+  font-weight: 258;
+}
+#probability-widget p.weight-259 {
+  font-weight: 259;
+}
+#probability-widget p.weight-260 {
+  font-weight: 260;
+}
+#probability-widget p.weight-261 {
+  font-weight: 261;
+}
+#probability-widget p.weight-262 {
+  font-weight: 262;
+}
+#probability-widget p.weight-263 {
+  font-weight: 263;
+}
+#probability-widget p.weight-264 {
+  font-weight: 264;
+}
+#probability-widget p.weight-265 {
+  font-weight: 265;
+}
+#probability-widget p.weight-266 {
+  font-weight: 266;
+}
+#probability-widget p.weight-267 {
+  font-weight: 267;
+}
+#probability-widget p.weight-268 {
+  font-weight: 268;
+}
+#probability-widget p.weight-269 {
+  font-weight: 269;
+}
+#probability-widget p.weight-270 {
+  font-weight: 270;
+}
+#probability-widget p.weight-271 {
+  font-weight: 271;
+}
+#probability-widget p.weight-272 {
+  font-weight: 272;
+}
+#probability-widget p.weight-273 {
+  font-weight: 273;
+}
+#probability-widget p.weight-274 {
+  font-weight: 274;
+}
+#probability-widget p.weight-275 {
+  font-weight: 275;
+}
+#probability-widget p.weight-276 {
+  font-weight: 276;
+}
+#probability-widget p.weight-277 {
+  font-weight: 277;
+}
+#probability-widget p.weight-278 {
+  font-weight: 278;
+}
+#probability-widget p.weight-279 {
+  font-weight: 279;
+}
+#probability-widget p.weight-280 {
+  font-weight: 280;
+}
+#probability-widget p.weight-281 {
+  font-weight: 281;
+}
+#probability-widget p.weight-282 {
+  font-weight: 282;
+}
+#probability-widget p.weight-283 {
+  font-weight: 283;
+}
+#probability-widget p.weight-284 {
+  font-weight: 284;
+}
+#probability-widget p.weight-285 {
+  font-weight: 285;
+}
+#probability-widget p.weight-286 {
+  font-weight: 286;
+}
+#probability-widget p.weight-287 {
+  font-weight: 287;
+}
+#probability-widget p.weight-288 {
+  font-weight: 288;
+}
+#probability-widget p.weight-289 {
+  font-weight: 289;
+}
+#probability-widget p.weight-290 {
+  font-weight: 290;
+}
+#probability-widget p.weight-291 {
+  font-weight: 291;
+}
+#probability-widget p.weight-292 {
+  font-weight: 292;
+}
+#probability-widget p.weight-293 {
+  font-weight: 293;
+}
+#probability-widget p.weight-294 {
+  font-weight: 294;
+}
+#probability-widget p.weight-295 {
+  font-weight: 295;
+}
+#probability-widget p.weight-296 {
+  font-weight: 296;
+}
+#probability-widget p.weight-297 {
+  font-weight: 297;
+}
+#probability-widget p.weight-298 {
+  font-weight: 298;
+}
+#probability-widget p.weight-299 {
+  font-weight: 299;
+}
+#probability-widget p.weight-300 {
+  font-weight: 300;
+}
+#probability-widget p.weight-301 {
+  font-weight: 301;
+}
+#probability-widget p.weight-302 {
+  font-weight: 302;
+}
+#probability-widget p.weight-303 {
+  font-weight: 303;
+}
+#probability-widget p.weight-304 {
+  font-weight: 304;
+}
+#probability-widget p.weight-305 {
+  font-weight: 305;
+}
+#probability-widget p.weight-306 {
+  font-weight: 306;
+}
+#probability-widget p.weight-307 {
+  font-weight: 307;
+}
+#probability-widget p.weight-308 {
+  font-weight: 308;
+}
+#probability-widget p.weight-309 {
+  font-weight: 309;
+}
+#probability-widget p.weight-310 {
+  font-weight: 310;
+}
+#probability-widget p.weight-311 {
+  font-weight: 311;
+}
+#probability-widget p.weight-312 {
+  font-weight: 312;
+}
+#probability-widget p.weight-313 {
+  font-weight: 313;
+}
+#probability-widget p.weight-314 {
+  font-weight: 314;
+}
+#probability-widget p.weight-315 {
+  font-weight: 315;
+}
+#probability-widget p.weight-316 {
+  font-weight: 316;
+}
+#probability-widget p.weight-317 {
+  font-weight: 317;
+}
+#probability-widget p.weight-318 {
+  font-weight: 318;
+}
+#probability-widget p.weight-319 {
+  font-weight: 319;
+}
+#probability-widget p.weight-320 {
+  font-weight: 320;
+}
+#probability-widget p.weight-321 {
+  font-weight: 321;
+}
+#probability-widget p.weight-322 {
+  font-weight: 322;
+}
+#probability-widget p.weight-323 {
+  font-weight: 323;
+}
+#probability-widget p.weight-324 {
+  font-weight: 324;
+}
+#probability-widget p.weight-325 {
+  font-weight: 325;
+}
+#probability-widget p.weight-326 {
+  font-weight: 326;
+}
+#probability-widget p.weight-327 {
+  font-weight: 327;
+}
+#probability-widget p.weight-328 {
+  font-weight: 328;
+}
+#probability-widget p.weight-329 {
+  font-weight: 329;
+}
+#probability-widget p.weight-330 {
+  font-weight: 330;
+}
+#probability-widget p.weight-331 {
+  font-weight: 331;
+}
+#probability-widget p.weight-332 {
+  font-weight: 332;
+}
+#probability-widget p.weight-333 {
+  font-weight: 333;
+}
+#probability-widget p.weight-334 {
+  font-weight: 334;
+}
+#probability-widget p.weight-335 {
+  font-weight: 335;
+}
+#probability-widget p.weight-336 {
+  font-weight: 336;
+}
+#probability-widget p.weight-337 {
+  font-weight: 337;
+}
+#probability-widget p.weight-338 {
+  font-weight: 338;
+}
+#probability-widget p.weight-339 {
+  font-weight: 339;
+}
+#probability-widget p.weight-340 {
+  font-weight: 340;
+}
+#probability-widget p.weight-341 {
+  font-weight: 341;
+}
+#probability-widget p.weight-342 {
+  font-weight: 342;
+}
+#probability-widget p.weight-343 {
+  font-weight: 343;
+}
+#probability-widget p.weight-344 {
+  font-weight: 344;
+}
+#probability-widget p.weight-345 {
+  font-weight: 345;
+}
+#probability-widget p.weight-346 {
+  font-weight: 346;
+}
+#probability-widget p.weight-347 {
+  font-weight: 347;
+}
+#probability-widget p.weight-348 {
+  font-weight: 348;
+}
+#probability-widget p.weight-349 {
+  font-weight: 349;
+}
+#probability-widget p.weight-350 {
+  font-weight: 350;
+}
+#probability-widget p.weight-351 {
+  font-weight: 351;
+}
+#probability-widget p.weight-352 {
+  font-weight: 352;
+}
+#probability-widget p.weight-353 {
+  font-weight: 353;
+}
+#probability-widget p.weight-354 {
+  font-weight: 354;
+}
+#probability-widget p.weight-355 {
+  font-weight: 355;
+}
+#probability-widget p.weight-356 {
+  font-weight: 356;
+}
+#probability-widget p.weight-357 {
+  font-weight: 357;
+}
+#probability-widget p.weight-358 {
+  font-weight: 358;
+}
+#probability-widget p.weight-359 {
+  font-weight: 359;
+}
+#probability-widget p.weight-360 {
+  font-weight: 360;
+}
+#probability-widget p.weight-361 {
+  font-weight: 361;
+}
+#probability-widget p.weight-362 {
+  font-weight: 362;
+}
+#probability-widget p.weight-363 {
+  font-weight: 363;
+}
+#probability-widget p.weight-364 {
+  font-weight: 364;
+}
+#probability-widget p.weight-365 {
+  font-weight: 365;
+}
+#probability-widget p.weight-366 {
+  font-weight: 366;
+}
+#probability-widget p.weight-367 {
+  font-weight: 367;
+}
+#probability-widget p.weight-368 {
+  font-weight: 368;
+}
+#probability-widget p.weight-369 {
+  font-weight: 369;
+}
+#probability-widget p.weight-370 {
+  font-weight: 370;
+}
+#probability-widget p.weight-371 {
+  font-weight: 371;
+}
+#probability-widget p.weight-372 {
+  font-weight: 372;
+}
+#probability-widget p.weight-373 {
+  font-weight: 373;
+}
+#probability-widget p.weight-374 {
+  font-weight: 374;
+}
+#probability-widget p.weight-375 {
+  font-weight: 375;
+}
+#probability-widget p.weight-376 {
+  font-weight: 376;
+}
+#probability-widget p.weight-377 {
+  font-weight: 377;
+}
+#probability-widget p.weight-378 {
+  font-weight: 378;
+}
+#probability-widget p.weight-379 {
+  font-weight: 379;
+}
+#probability-widget p.weight-380 {
+  font-weight: 380;
+}
+#probability-widget p.weight-381 {
+  font-weight: 381;
+}
+#probability-widget p.weight-382 {
+  font-weight: 382;
+}
+#probability-widget p.weight-383 {
+  font-weight: 383;
+}
+#probability-widget p.weight-384 {
+  font-weight: 384;
+}
+#probability-widget p.weight-385 {
+  font-weight: 385;
+}
+#probability-widget p.weight-386 {
+  font-weight: 386;
+}
+#probability-widget p.weight-387 {
+  font-weight: 387;
+}
+#probability-widget p.weight-388 {
+  font-weight: 388;
+}
+#probability-widget p.weight-389 {
+  font-weight: 389;
+}
+#probability-widget p.weight-390 {
+  font-weight: 390;
+}
+#probability-widget p.weight-391 {
+  font-weight: 391;
+}
+#probability-widget p.weight-392 {
+  font-weight: 392;
+}
+#probability-widget p.weight-393 {
+  font-weight: 393;
+}
+#probability-widget p.weight-394 {
+  font-weight: 394;
+}
+#probability-widget p.weight-395 {
+  font-weight: 395;
+}
+#probability-widget p.weight-396 {
+  font-weight: 396;
+}
+#probability-widget p.weight-397 {
+  font-weight: 397;
+}
+#probability-widget p.weight-398 {
+  font-weight: 398;
+}
+#probability-widget p.weight-399 {
+  font-weight: 399;
+}
+#probability-widget p.weight-400 {
+  font-weight: 400;
+}
+#probability-widget p.weight-401 {
+  font-weight: 401;
+}
+#probability-widget p.weight-402 {
+  font-weight: 402;
+}
+#probability-widget p.weight-403 {
+  font-weight: 403;
+}
+#probability-widget p.weight-404 {
+  font-weight: 404;
+}
+#probability-widget p.weight-405 {
+  font-weight: 405;
+}
+#probability-widget p.weight-406 {
+  font-weight: 406;
+}
+#probability-widget p.weight-407 {
+  font-weight: 407;
+}
+#probability-widget p.weight-408 {
+  font-weight: 408;
+}
+#probability-widget p.weight-409 {
+  font-weight: 409;
+}
+#probability-widget p.weight-410 {
+  font-weight: 410;
+}
+#probability-widget p.weight-411 {
+  font-weight: 411;
+}
+#probability-widget p.weight-412 {
+  font-weight: 412;
+}
+#probability-widget p.weight-413 {
+  font-weight: 413;
+}
+#probability-widget p.weight-414 {
+  font-weight: 414;
+}
+#probability-widget p.weight-415 {
+  font-weight: 415;
+}
+#probability-widget p.weight-416 {
+  font-weight: 416;
+}
+#probability-widget p.weight-417 {
+  font-weight: 417;
+}
+#probability-widget p.weight-418 {
+  font-weight: 418;
+}
+#probability-widget p.weight-419 {
+  font-weight: 419;
+}
+#probability-widget p.weight-420 {
+  font-weight: 420;
+}
+#probability-widget p.weight-421 {
+  font-weight: 421;
+}
+#probability-widget p.weight-422 {
+  font-weight: 422;
+}
+#probability-widget p.weight-423 {
+  font-weight: 423;
+}
+#probability-widget p.weight-424 {
+  font-weight: 424;
+}
+#probability-widget p.weight-425 {
+  font-weight: 425;
+}
+#probability-widget p.weight-426 {
+  font-weight: 426;
+}
+#probability-widget p.weight-427 {
+  font-weight: 427;
+}
+#probability-widget p.weight-428 {
+  font-weight: 428;
+}
+#probability-widget p.weight-429 {
+  font-weight: 429;
+}
+#probability-widget p.weight-430 {
+  font-weight: 430;
+}
+#probability-widget p.weight-431 {
+  font-weight: 431;
+}
+#probability-widget p.weight-432 {
+  font-weight: 432;
+}
+#probability-widget p.weight-433 {
+  font-weight: 433;
+}
+#probability-widget p.weight-434 {
+  font-weight: 434;
+}
+#probability-widget p.weight-435 {
+  font-weight: 435;
+}
+#probability-widget p.weight-436 {
+  font-weight: 436;
+}
+#probability-widget p.weight-437 {
+  font-weight: 437;
+}
+#probability-widget p.weight-438 {
+  font-weight: 438;
+}
+#probability-widget p.weight-439 {
+  font-weight: 439;
+}
+#probability-widget p.weight-440 {
+  font-weight: 440;
+}
+#probability-widget p.weight-441 {
+  font-weight: 441;
+}
+#probability-widget p.weight-442 {
+  font-weight: 442;
+}
+#probability-widget p.weight-443 {
+  font-weight: 443;
+}
+#probability-widget p.weight-444 {
+  font-weight: 444;
+}
+#probability-widget p.weight-445 {
+  font-weight: 445;
+}
+#probability-widget p.weight-446 {
+  font-weight: 446;
+}
+#probability-widget p.weight-447 {
+  font-weight: 447;
+}
+#probability-widget p.weight-448 {
+  font-weight: 448;
+}
+#probability-widget p.weight-449 {
+  font-weight: 449;
+}
+#probability-widget p.weight-450 {
+  font-weight: 450;
+}
+#probability-widget p.weight-451 {
+  font-weight: 451;
+}
+#probability-widget p.weight-452 {
+  font-weight: 452;
+}
+#probability-widget p.weight-453 {
+  font-weight: 453;
+}
+#probability-widget p.weight-454 {
+  font-weight: 454;
+}
+#probability-widget p.weight-455 {
+  font-weight: 455;
+}
+#probability-widget p.weight-456 {
+  font-weight: 456;
+}
+#probability-widget p.weight-457 {
+  font-weight: 457;
+}
+#probability-widget p.weight-458 {
+  font-weight: 458;
+}
+#probability-widget p.weight-459 {
+  font-weight: 459;
+}
+#probability-widget p.weight-460 {
+  font-weight: 460;
+}
+#probability-widget p.weight-461 {
+  font-weight: 461;
+}
+#probability-widget p.weight-462 {
+  font-weight: 462;
+}
+#probability-widget p.weight-463 {
+  font-weight: 463;
+}
+#probability-widget p.weight-464 {
+  font-weight: 464;
+}
+#probability-widget p.weight-465 {
+  font-weight: 465;
+}
+#probability-widget p.weight-466 {
+  font-weight: 466;
+}
+#probability-widget p.weight-467 {
+  font-weight: 467;
+}
+#probability-widget p.weight-468 {
+  font-weight: 468;
+}
+#probability-widget p.weight-469 {
+  font-weight: 469;
+}
+#probability-widget p.weight-470 {
+  font-weight: 470;
+}
+#probability-widget p.weight-471 {
+  font-weight: 471;
+}
+#probability-widget p.weight-472 {
+  font-weight: 472;
+}
+#probability-widget p.weight-473 {
+  font-weight: 473;
+}
+#probability-widget p.weight-474 {
+  font-weight: 474;
+}
+#probability-widget p.weight-475 {
+  font-weight: 475;
+}
+#probability-widget p.weight-476 {
+  font-weight: 476;
+}
+#probability-widget p.weight-477 {
+  font-weight: 477;
+}
+#probability-widget p.weight-478 {
+  font-weight: 478;
+}
+#probability-widget p.weight-479 {
+  font-weight: 479;
+}
+#probability-widget p.weight-480 {
+  font-weight: 480;
+}
+#probability-widget p.weight-481 {
+  font-weight: 481;
+}
+#probability-widget p.weight-482 {
+  font-weight: 482;
+}
+#probability-widget p.weight-483 {
+  font-weight: 483;
+}
+#probability-widget p.weight-484 {
+  font-weight: 484;
+}
+#probability-widget p.weight-485 {
+  font-weight: 485;
+}
+#probability-widget p.weight-486 {
+  font-weight: 486;
+}
+#probability-widget p.weight-487 {
+  font-weight: 487;
+}
+#probability-widget p.weight-488 {
+  font-weight: 488;
+}
+#probability-widget p.weight-489 {
+  font-weight: 489;
+}
+#probability-widget p.weight-490 {
+  font-weight: 490;
+}
+#probability-widget p.weight-491 {
+  font-weight: 491;
+}
+#probability-widget p.weight-492 {
+  font-weight: 492;
+}
+#probability-widget p.weight-493 {
+  font-weight: 493;
+}
+#probability-widget p.weight-494 {
+  font-weight: 494;
+}
+#probability-widget p.weight-495 {
+  font-weight: 495;
+}
+#probability-widget p.weight-496 {
+  font-weight: 496;
+}
+#probability-widget p.weight-497 {
+  font-weight: 497;
+}
+#probability-widget p.weight-498 {
+  font-weight: 498;
+}
+#probability-widget p.weight-499 {
+  font-weight: 499;
+}
+#probability-widget p.weight-500 {
+  font-weight: 500;
+}
+#probability-widget p.weight-501 {
+  font-weight: 501;
+}
+#probability-widget p.weight-502 {
+  font-weight: 502;
+}
+#probability-widget p.weight-503 {
+  font-weight: 503;
+}
+#probability-widget p.weight-504 {
+  font-weight: 504;
+}
+#probability-widget p.weight-505 {
+  font-weight: 505;
+}
+#probability-widget p.weight-506 {
+  font-weight: 506;
+}
+#probability-widget p.weight-507 {
+  font-weight: 507;
+}
+#probability-widget p.weight-508 {
+  font-weight: 508;
+}
+#probability-widget p.weight-509 {
+  font-weight: 509;
+}
+#probability-widget p.weight-510 {
+  font-weight: 510;
+}
+#probability-widget p.weight-511 {
+  font-weight: 511;
+}
+#probability-widget p.weight-512 {
+  font-weight: 512;
+}
+#probability-widget p.weight-513 {
+  font-weight: 513;
+}
+#probability-widget p.weight-514 {
+  font-weight: 514;
+}
+#probability-widget p.weight-515 {
+  font-weight: 515;
+}
+#probability-widget p.weight-516 {
+  font-weight: 516;
+}
+#probability-widget p.weight-517 {
+  font-weight: 517;
+}
+#probability-widget p.weight-518 {
+  font-weight: 518;
+}
+#probability-widget p.weight-519 {
+  font-weight: 519;
+}
+#probability-widget p.weight-520 {
+  font-weight: 520;
+}
+#probability-widget p.weight-521 {
+  font-weight: 521;
+}
+#probability-widget p.weight-522 {
+  font-weight: 522;
+}
+#probability-widget p.weight-523 {
+  font-weight: 523;
+}
+#probability-widget p.weight-524 {
+  font-weight: 524;
+}
+#probability-widget p.weight-525 {
+  font-weight: 525;
+}
+#probability-widget p.weight-526 {
+  font-weight: 526;
+}
+#probability-widget p.weight-527 {
+  font-weight: 527;
+}
+#probability-widget p.weight-528 {
+  font-weight: 528;
+}
+#probability-widget p.weight-529 {
+  font-weight: 529;
+}
+#probability-widget p.weight-530 {
+  font-weight: 530;
+}
+#probability-widget p.weight-531 {
+  font-weight: 531;
+}
+#probability-widget p.weight-532 {
+  font-weight: 532;
+}
+#probability-widget p.weight-533 {
+  font-weight: 533;
+}
+#probability-widget p.weight-534 {
+  font-weight: 534;
+}
+#probability-widget p.weight-535 {
+  font-weight: 535;
+}
+#probability-widget p.weight-536 {
+  font-weight: 536;
+}
+#probability-widget p.weight-537 {
+  font-weight: 537;
+}
+#probability-widget p.weight-538 {
+  font-weight: 538;
+}
+#probability-widget p.weight-539 {
+  font-weight: 539;
+}
+#probability-widget p.weight-540 {
+  font-weight: 540;
+}
+#probability-widget p.weight-541 {
+  font-weight: 541;
+}
+#probability-widget p.weight-542 {
+  font-weight: 542;
+}
+#probability-widget p.weight-543 {
+  font-weight: 543;
+}
+#probability-widget p.weight-544 {
+  font-weight: 544;
+}
+#probability-widget p.weight-545 {
+  font-weight: 545;
+}
+#probability-widget p.weight-546 {
+  font-weight: 546;
+}
+#probability-widget p.weight-547 {
+  font-weight: 547;
+}
+#probability-widget p.weight-548 {
+  font-weight: 548;
+}
+#probability-widget p.weight-549 {
+  font-weight: 549;
+}
+#probability-widget p.weight-550 {
+  font-weight: 550;
+}
+#probability-widget p.weight-551 {
+  font-weight: 551;
+}
+#probability-widget p.weight-552 {
+  font-weight: 552;
+}
+#probability-widget p.weight-553 {
+  font-weight: 553;
+}
+#probability-widget p.weight-554 {
+  font-weight: 554;
+}
+#probability-widget p.weight-555 {
+  font-weight: 555;
+}
+#probability-widget p.weight-556 {
+  font-weight: 556;
+}
+#probability-widget p.weight-557 {
+  font-weight: 557;
+}
+#probability-widget p.weight-558 {
+  font-weight: 558;
+}
+#probability-widget p.weight-559 {
+  font-weight: 559;
+}
+#probability-widget p.weight-560 {
+  font-weight: 560;
+}
+#probability-widget p.weight-561 {
+  font-weight: 561;
+}
+#probability-widget p.weight-562 {
+  font-weight: 562;
+}
+#probability-widget p.weight-563 {
+  font-weight: 563;
+}
+#probability-widget p.weight-564 {
+  font-weight: 564;
+}
+#probability-widget p.weight-565 {
+  font-weight: 565;
+}
+#probability-widget p.weight-566 {
+  font-weight: 566;
+}
+#probability-widget p.weight-567 {
+  font-weight: 567;
+}
+#probability-widget p.weight-568 {
+  font-weight: 568;
+}
+#probability-widget p.weight-569 {
+  font-weight: 569;
+}
+#probability-widget p.weight-570 {
+  font-weight: 570;
+}
+#probability-widget p.weight-571 {
+  font-weight: 571;
+}
+#probability-widget p.weight-572 {
+  font-weight: 572;
+}
+#probability-widget p.weight-573 {
+  font-weight: 573;
+}
+#probability-widget p.weight-574 {
+  font-weight: 574;
+}
+#probability-widget p.weight-575 {
+  font-weight: 575;
+}
+#probability-widget p.weight-576 {
+  font-weight: 576;
+}
+#probability-widget p.weight-577 {
+  font-weight: 577;
+}
+#probability-widget p.weight-578 {
+  font-weight: 578;
+}
+#probability-widget p.weight-579 {
+  font-weight: 579;
+}
+#probability-widget p.weight-580 {
+  font-weight: 580;
+}
+#probability-widget p.weight-581 {
+  font-weight: 581;
+}
+#probability-widget p.weight-582 {
+  font-weight: 582;
+}
+#probability-widget p.weight-583 {
+  font-weight: 583;
+}
+#probability-widget p.weight-584 {
+  font-weight: 584;
+}
+#probability-widget p.weight-585 {
+  font-weight: 585;
+}
+#probability-widget p.weight-586 {
+  font-weight: 586;
+}
+#probability-widget p.weight-587 {
+  font-weight: 587;
+}
+#probability-widget p.weight-588 {
+  font-weight: 588;
+}
+#probability-widget p.weight-589 {
+  font-weight: 589;
+}
+#probability-widget p.weight-590 {
+  font-weight: 590;
+}
+#probability-widget p.weight-591 {
+  font-weight: 591;
+}
+#probability-widget p.weight-592 {
+  font-weight: 592;
+}
+#probability-widget p.weight-593 {
+  font-weight: 593;
+}
+#probability-widget p.weight-594 {
+  font-weight: 594;
+}
+#probability-widget p.weight-595 {
+  font-weight: 595;
+}
+#probability-widget p.weight-596 {
+  font-weight: 596;
+}
+#probability-widget p.weight-597 {
+  font-weight: 597;
+}
+#probability-widget p.weight-598 {
+  font-weight: 598;
+}
+#probability-widget p.weight-599 {
+  font-weight: 599;
+}
+#probability-widget p.weight-600 {
+  font-weight: 600;
+}
+#probability-widget p.weight-601 {
+  font-weight: 601;
+}
+#probability-widget p.weight-602 {
+  font-weight: 602;
+}
+#probability-widget p.weight-603 {
+  font-weight: 603;
+}
+#probability-widget p.weight-604 {
+  font-weight: 604;
+}
+#probability-widget p.weight-605 {
+  font-weight: 605;
+}
+#probability-widget p.weight-606 {
+  font-weight: 606;
+}
+#probability-widget p.weight-607 {
+  font-weight: 607;
+}
+#probability-widget p.weight-608 {
+  font-weight: 608;
+}
+#probability-widget p.weight-609 {
+  font-weight: 609;
+}
+#probability-widget p.weight-610 {
+  font-weight: 610;
+}
+#probability-widget p.weight-611 {
+  font-weight: 611;
+}
+#probability-widget p.weight-612 {
+  font-weight: 612;
+}
+#probability-widget p.weight-613 {
+  font-weight: 613;
+}
+#probability-widget p.weight-614 {
+  font-weight: 614;
+}
+#probability-widget p.weight-615 {
+  font-weight: 615;
+}
+#probability-widget p.weight-616 {
+  font-weight: 616;
+}
+#probability-widget p.weight-617 {
+  font-weight: 617;
+}
+#probability-widget p.weight-618 {
+  font-weight: 618;
+}
+#probability-widget p.weight-619 {
+  font-weight: 619;
+}
+#probability-widget p.weight-620 {
+  font-weight: 620;
+}
+#probability-widget p.weight-621 {
+  font-weight: 621;
+}
+#probability-widget p.weight-622 {
+  font-weight: 622;
+}
+#probability-widget p.weight-623 {
+  font-weight: 623;
+}
+#probability-widget p.weight-624 {
+  font-weight: 624;
+}
+#probability-widget p.weight-625 {
+  font-weight: 625;
+}
+#probability-widget p.weight-626 {
+  font-weight: 626;
+}
+#probability-widget p.weight-627 {
+  font-weight: 627;
+}
+#probability-widget p.weight-628 {
+  font-weight: 628;
+}
+#probability-widget p.weight-629 {
+  font-weight: 629;
+}
+#probability-widget p.weight-630 {
+  font-weight: 630;
+}
+#probability-widget p.weight-631 {
+  font-weight: 631;
+}
+#probability-widget p.weight-632 {
+  font-weight: 632;
+}
+#probability-widget p.weight-633 {
+  font-weight: 633;
+}
+#probability-widget p.weight-634 {
+  font-weight: 634;
+}
+#probability-widget p.weight-635 {
+  font-weight: 635;
+}
+#probability-widget p.weight-636 {
+  font-weight: 636;
+}
+#probability-widget p.weight-637 {
+  font-weight: 637;
+}
+#probability-widget p.weight-638 {
+  font-weight: 638;
+}
+#probability-widget p.weight-639 {
+  font-weight: 639;
+}
+#probability-widget p.weight-640 {
+  font-weight: 640;
+}
+#probability-widget p.weight-641 {
+  font-weight: 641;
+}
+#probability-widget p.weight-642 {
+  font-weight: 642;
+}
+#probability-widget p.weight-643 {
+  font-weight: 643;
+}
+#probability-widget p.weight-644 {
+  font-weight: 644;
+}
+#probability-widget p.weight-645 {
+  font-weight: 645;
+}
+#probability-widget p.weight-646 {
+  font-weight: 646;
+}
+#probability-widget p.weight-647 {
+  font-weight: 647;
+}
+#probability-widget p.weight-648 {
+  font-weight: 648;
+}
+#probability-widget p.weight-649 {
+  font-weight: 649;
+}
+#probability-widget p.weight-650 {
+  font-weight: 650;
+}
+#probability-widget p.weight-651 {
+  font-weight: 651;
+}
+#probability-widget p.weight-652 {
+  font-weight: 652;
+}
+#probability-widget p.weight-653 {
+  font-weight: 653;
+}
+#probability-widget p.weight-654 {
+  font-weight: 654;
+}
+#probability-widget p.weight-655 {
+  font-weight: 655;
+}
+#probability-widget p.weight-656 {
+  font-weight: 656;
+}
+#probability-widget p.weight-657 {
+  font-weight: 657;
+}
+#probability-widget p.weight-658 {
+  font-weight: 658;
+}
+#probability-widget p.weight-659 {
+  font-weight: 659;
+}
+#probability-widget p.weight-660 {
+  font-weight: 660;
+}
+#probability-widget p.weight-661 {
+  font-weight: 661;
+}
+#probability-widget p.weight-662 {
+  font-weight: 662;
+}
+#probability-widget p.weight-663 {
+  font-weight: 663;
+}
+#probability-widget p.weight-664 {
+  font-weight: 664;
+}
+#probability-widget p.weight-665 {
+  font-weight: 665;
+}
+#probability-widget p.weight-666 {
+  font-weight: 666;
+}
+#probability-widget p.weight-667 {
+  font-weight: 667;
+}
+#probability-widget p.weight-668 {
+  font-weight: 668;
+}
+#probability-widget p.weight-669 {
+  font-weight: 669;
+}
+#probability-widget p.weight-670 {
+  font-weight: 670;
+}
+#probability-widget p.weight-671 {
+  font-weight: 671;
+}
+#probability-widget p.weight-672 {
+  font-weight: 672;
+}
+#probability-widget p.weight-673 {
+  font-weight: 673;
+}
+#probability-widget p.weight-674 {
+  font-weight: 674;
+}
+#probability-widget p.weight-675 {
+  font-weight: 675;
+}
+#probability-widget p.weight-676 {
+  font-weight: 676;
+}
+#probability-widget p.weight-677 {
+  font-weight: 677;
+}
+#probability-widget p.weight-678 {
+  font-weight: 678;
+}
+#probability-widget p.weight-679 {
+  font-weight: 679;
+}
+#probability-widget p.weight-680 {
+  font-weight: 680;
+}
+#probability-widget p.weight-681 {
+  font-weight: 681;
+}
+#probability-widget p.weight-682 {
+  font-weight: 682;
+}
+#probability-widget p.weight-683 {
+  font-weight: 683;
+}
+#probability-widget p.weight-684 {
+  font-weight: 684;
+}
+#probability-widget p.weight-685 {
+  font-weight: 685;
+}
+#probability-widget p.weight-686 {
+  font-weight: 686;
+}
+#probability-widget p.weight-687 {
+  font-weight: 687;
+}
+#probability-widget p.weight-688 {
+  font-weight: 688;
+}
+#probability-widget p.weight-689 {
+  font-weight: 689;
+}
+#probability-widget p.weight-690 {
+  font-weight: 690;
+}
+#probability-widget p.weight-691 {
+  font-weight: 691;
+}
+#probability-widget p.weight-692 {
+  font-weight: 692;
+}
+#probability-widget p.weight-693 {
+  font-weight: 693;
+}
+#probability-widget p.weight-694 {
+  font-weight: 694;
+}
+#probability-widget p.weight-695 {
+  font-weight: 695;
+}
+#probability-widget p.weight-696 {
+  font-weight: 696;
+}
+#probability-widget p.weight-697 {
+  font-weight: 697;
+}
+#probability-widget p.weight-698 {
+  font-weight: 698;
+}
+#probability-widget p.weight-699 {
+  font-weight: 699;
+}
+#probability-widget p.weight-700 {
+  font-weight: 700;
+}
+#probability-widget p.weight-701 {
+  font-weight: 701;
+}
+#probability-widget p.weight-702 {
+  font-weight: 702;
+}
+#probability-widget p.weight-703 {
+  font-weight: 703;
+}
+#probability-widget p.weight-704 {
+  font-weight: 704;
+}
+#probability-widget p.weight-705 {
+  font-weight: 705;
+}
+#probability-widget p.weight-706 {
+  font-weight: 706;
+}
+#probability-widget p.weight-707 {
+  font-weight: 707;
+}
+#probability-widget p.weight-708 {
+  font-weight: 708;
+}
+#probability-widget p.weight-709 {
+  font-weight: 709;
+}
+#probability-widget p.weight-710 {
+  font-weight: 710;
+}
+#probability-widget p.weight-711 {
+  font-weight: 711;
+}
+#probability-widget p.weight-712 {
+  font-weight: 712;
+}
+#probability-widget p.weight-713 {
+  font-weight: 713;
+}
+#probability-widget p.weight-714 {
+  font-weight: 714;
+}
+#probability-widget p.weight-715 {
+  font-weight: 715;
+}
+#probability-widget p.weight-716 {
+  font-weight: 716;
+}
+#probability-widget p.weight-717 {
+  font-weight: 717;
+}
+#probability-widget p.weight-718 {
+  font-weight: 718;
+}
+#probability-widget p.weight-719 {
+  font-weight: 719;
+}
+#probability-widget p.weight-720 {
+  font-weight: 720;
+}
+#probability-widget p.weight-721 {
+  font-weight: 721;
+}
+#probability-widget p.weight-722 {
+  font-weight: 722;
+}
+#probability-widget p.weight-723 {
+  font-weight: 723;
+}
+#probability-widget p.weight-724 {
+  font-weight: 724;
+}
+#probability-widget p.weight-725 {
+  font-weight: 725;
+}
+#probability-widget p.weight-726 {
+  font-weight: 726;
+}
+#probability-widget p.weight-727 {
+  font-weight: 727;
+}
+#probability-widget p.weight-728 {
+  font-weight: 728;
+}
+#probability-widget p.weight-729 {
+  font-weight: 729;
+}
+#probability-widget p.weight-730 {
+  font-weight: 730;
+}
+#probability-widget p.weight-731 {
+  font-weight: 731;
+}
+#probability-widget p.weight-732 {
+  font-weight: 732;
+}
+#probability-widget p.weight-733 {
+  font-weight: 733;
+}
+#probability-widget p.weight-734 {
+  font-weight: 734;
+}
+#probability-widget p.weight-735 {
+  font-weight: 735;
+}
+#probability-widget p.weight-736 {
+  font-weight: 736;
+}
+#probability-widget p.weight-737 {
+  font-weight: 737;
+}
+#probability-widget p.weight-738 {
+  font-weight: 738;
+}
+#probability-widget p.weight-739 {
+  font-weight: 739;
+}
+#probability-widget p.weight-740 {
+  font-weight: 740;
+}
+#probability-widget p.weight-741 {
+  font-weight: 741;
+}
+#probability-widget p.weight-742 {
+  font-weight: 742;
+}
+#probability-widget p.weight-743 {
+  font-weight: 743;
+}
+#probability-widget p.weight-744 {
+  font-weight: 744;
+}
+#probability-widget p.weight-745 {
+  font-weight: 745;
+}
+#probability-widget p.weight-746 {
+  font-weight: 746;
+}
+#probability-widget p.weight-747 {
+  font-weight: 747;
+}
+#probability-widget p.weight-748 {
+  font-weight: 748;
+}
+#probability-widget p.weight-749 {
+  font-weight: 749;
+}
+#probability-widget p.weight-750 {
+  font-weight: 750;
+}
+#probability-widget p.weight-751 {
+  font-weight: 751;
+}
+#probability-widget p.weight-752 {
+  font-weight: 752;
+}
+#probability-widget p.weight-753 {
+  font-weight: 753;
+}
+#probability-widget p.weight-754 {
+  font-weight: 754;
+}
+#probability-widget p.weight-755 {
+  font-weight: 755;
+}
+#probability-widget p.weight-756 {
+  font-weight: 756;
+}
+#probability-widget p.weight-757 {
+  font-weight: 757;
+}
+#probability-widget p.weight-758 {
+  font-weight: 758;
+}
+#probability-widget p.weight-759 {
+  font-weight: 759;
+}
+#probability-widget p.weight-760 {
+  font-weight: 760;
+}
+#probability-widget p.weight-761 {
+  font-weight: 761;
+}
+#probability-widget p.weight-762 {
+  font-weight: 762;
+}
+#probability-widget p.weight-763 {
+  font-weight: 763;
+}
+#probability-widget p.weight-764 {
+  font-weight: 764;
+}
+#probability-widget p.weight-765 {
+  font-weight: 765;
+}
+#probability-widget p.weight-766 {
+  font-weight: 766;
+}
+#probability-widget p.weight-767 {
+  font-weight: 767;
+}
+#probability-widget p.weight-768 {
+  font-weight: 768;
+}
+#probability-widget p.weight-769 {
+  font-weight: 769;
+}
+#probability-widget p.weight-770 {
+  font-weight: 770;
+}
+#probability-widget p.weight-771 {
+  font-weight: 771;
+}
+#probability-widget p.weight-772 {
+  font-weight: 772;
+}
+#probability-widget p.weight-773 {
+  font-weight: 773;
+}
+#probability-widget p.weight-774 {
+  font-weight: 774;
+}
+#probability-widget p.weight-775 {
+  font-weight: 775;
+}
+#probability-widget p.weight-776 {
+  font-weight: 776;
+}
+#probability-widget p.weight-777 {
+  font-weight: 777;
+}
+#probability-widget p.weight-778 {
+  font-weight: 778;
+}
+#probability-widget p.weight-779 {
+  font-weight: 779;
+}
+#probability-widget p.weight-780 {
+  font-weight: 780;
+}
+#probability-widget p.weight-781 {
+  font-weight: 781;
+}
+#probability-widget p.weight-782 {
+  font-weight: 782;
+}
+#probability-widget p.weight-783 {
+  font-weight: 783;
+}
+#probability-widget p.weight-784 {
+  font-weight: 784;
+}
+#probability-widget p.weight-785 {
+  font-weight: 785;
+}
+#probability-widget p.weight-786 {
+  font-weight: 786;
+}
+#probability-widget p.weight-787 {
+  font-weight: 787;
+}
+#probability-widget p.weight-788 {
+  font-weight: 788;
+}
+#probability-widget p.weight-789 {
+  font-weight: 789;
+}
+#probability-widget p.weight-790 {
+  font-weight: 790;
+}
+#probability-widget p.weight-791 {
+  font-weight: 791;
+}
+#probability-widget p.weight-792 {
+  font-weight: 792;
+}
+#probability-widget p.weight-793 {
+  font-weight: 793;
+}
+#probability-widget p.weight-794 {
+  font-weight: 794;
+}
+#probability-widget p.weight-795 {
+  font-weight: 795;
+}
+#probability-widget p.weight-796 {
+  font-weight: 796;
+}
+#probability-widget p.weight-797 {
+  font-weight: 797;
+}
+#probability-widget p.weight-798 {
+  font-weight: 798;
+}
+#probability-widget p.weight-799 {
+  font-weight: 799;
+}
+#probability-widget p.weight-800 {
+  font-weight: 800;
+}
+#probability-widget p.weight-801 {
+  font-weight: 801;
+}
+#probability-widget p.weight-802 {
+  font-weight: 802;
+}
+#probability-widget p.weight-803 {
+  font-weight: 803;
+}
+#probability-widget p.weight-804 {
+  font-weight: 804;
+}
+#probability-widget p.weight-805 {
+  font-weight: 805;
+}
+#probability-widget p.weight-806 {
+  font-weight: 806;
+}
+#probability-widget p.weight-807 {
+  font-weight: 807;
+}
+#probability-widget p.weight-808 {
+  font-weight: 808;
+}
+#probability-widget p.weight-809 {
+  font-weight: 809;
+}
+#probability-widget p.weight-810 {
+  font-weight: 810;
+}
+#probability-widget p.weight-811 {
+  font-weight: 811;
+}
+#probability-widget p.weight-812 {
+  font-weight: 812;
+}
+#probability-widget p.weight-813 {
+  font-weight: 813;
+}
+#probability-widget p.weight-814 {
+  font-weight: 814;
+}
+#probability-widget p.weight-815 {
+  font-weight: 815;
+}
+#probability-widget p.weight-816 {
+  font-weight: 816;
+}
+#probability-widget p.weight-817 {
+  font-weight: 817;
+}
+#probability-widget p.weight-818 {
+  font-weight: 818;
+}
+#probability-widget p.weight-819 {
+  font-weight: 819;
+}
+#probability-widget p.weight-820 {
+  font-weight: 820;
+}
+#probability-widget p.weight-821 {
+  font-weight: 821;
+}
+#probability-widget p.weight-822 {
+  font-weight: 822;
+}
+#probability-widget p.weight-823 {
+  font-weight: 823;
+}
+#probability-widget p.weight-824 {
+  font-weight: 824;
+}
+#probability-widget p.weight-825 {
+  font-weight: 825;
+}
+#probability-widget p.weight-826 {
+  font-weight: 826;
+}
+#probability-widget p.weight-827 {
+  font-weight: 827;
+}
+#probability-widget p.weight-828 {
+  font-weight: 828;
+}
+#probability-widget p.weight-829 {
+  font-weight: 829;
+}
+#probability-widget p.weight-830 {
+  font-weight: 830;
+}
+#probability-widget p.weight-831 {
+  font-weight: 831;
+}
+#probability-widget p.weight-832 {
+  font-weight: 832;
+}
+#probability-widget p.weight-833 {
+  font-weight: 833;
+}
+#probability-widget p.weight-834 {
+  font-weight: 834;
+}
+#probability-widget p.weight-835 {
+  font-weight: 835;
+}
+#probability-widget p.weight-836 {
+  font-weight: 836;
+}
+#probability-widget p.weight-837 {
+  font-weight: 837;
+}
+#probability-widget p.weight-838 {
+  font-weight: 838;
+}
+#probability-widget p.weight-839 {
+  font-weight: 839;
+}
+#probability-widget p.weight-840 {
+  font-weight: 840;
+}
+#probability-widget p.weight-841 {
+  font-weight: 841;
+}
+#probability-widget p.weight-842 {
+  font-weight: 842;
+}
+#probability-widget p.weight-843 {
+  font-weight: 843;
+}
+#probability-widget p.weight-844 {
+  font-weight: 844;
+}
+#probability-widget p.weight-845 {
+  font-weight: 845;
+}
+#probability-widget p.weight-846 {
+  font-weight: 846;
+}
+#probability-widget p.weight-847 {
+  font-weight: 847;
+}
+#probability-widget p.weight-848 {
+  font-weight: 848;
+}
+#probability-widget p.weight-849 {
+  font-weight: 849;
+}
+#probability-widget p.weight-850 {
+  font-weight: 850;
+}
+#probability-widget p.weight-851 {
+  font-weight: 851;
+}
+#probability-widget p.weight-852 {
+  font-weight: 852;
+}
+#probability-widget p.weight-853 {
+  font-weight: 853;
+}
+#probability-widget p.weight-854 {
+  font-weight: 854;
+}
+#probability-widget p.weight-855 {
+  font-weight: 855;
+}
+#probability-widget p.weight-856 {
+  font-weight: 856;
+}
+#probability-widget p.weight-857 {
+  font-weight: 857;
+}
+#probability-widget p.weight-858 {
+  font-weight: 858;
+}
+#probability-widget p.weight-859 {
+  font-weight: 859;
+}
+#probability-widget p.weight-860 {
+  font-weight: 860;
+}
+#probability-widget p.weight-861 {
+  font-weight: 861;
+}
+#probability-widget p.weight-862 {
+  font-weight: 862;
+}
+#probability-widget p.weight-863 {
+  font-weight: 863;
+}
+#probability-widget p.weight-864 {
+  font-weight: 864;
+}
+#probability-widget p.weight-865 {
+  font-weight: 865;
+}
+#probability-widget p.weight-866 {
+  font-weight: 866;
+}
+#probability-widget p.weight-867 {
+  font-weight: 867;
+}
+#probability-widget p.weight-868 {
+  font-weight: 868;
+}
+#probability-widget p.weight-869 {
+  font-weight: 869;
+}
+#probability-widget p.weight-870 {
+  font-weight: 870;
+}
+#probability-widget p.weight-871 {
+  font-weight: 871;
+}
+#probability-widget p.weight-872 {
+  font-weight: 872;
+}
+#probability-widget p.weight-873 {
+  font-weight: 873;
+}
+#probability-widget p.weight-874 {
+  font-weight: 874;
+}
+#probability-widget p.weight-875 {
+  font-weight: 875;
+}
+#probability-widget p.weight-876 {
+  font-weight: 876;
+}
+#probability-widget p.weight-877 {
+  font-weight: 877;
+}
+#probability-widget p.weight-878 {
+  font-weight: 878;
+}
+#probability-widget p.weight-879 {
+  font-weight: 879;
+}
+#probability-widget p.weight-880 {
+  font-weight: 880;
+}
+#probability-widget p.weight-881 {
+  font-weight: 881;
+}
+#probability-widget p.weight-882 {
+  font-weight: 882;
+}
+#probability-widget p.weight-883 {
+  font-weight: 883;
+}
+#probability-widget p.weight-884 {
+  font-weight: 884;
+}
+#probability-widget p.weight-885 {
+  font-weight: 885;
+}
+#probability-widget p.weight-886 {
+  font-weight: 886;
+}
+#probability-widget p.weight-887 {
+  font-weight: 887;
+}
+#probability-widget p.weight-888 {
+  font-weight: 888;
+}
+#probability-widget p.weight-889 {
+  font-weight: 889;
+}
+#probability-widget p.weight-890 {
+  font-weight: 890;
+}
+#probability-widget p.weight-891 {
+  font-weight: 891;
+}
+#probability-widget p.weight-892 {
+  font-weight: 892;
+}
+#probability-widget p.weight-893 {
+  font-weight: 893;
+}
+#probability-widget p.weight-894 {
+  font-weight: 894;
+}
+#probability-widget p.weight-895 {
+  font-weight: 895;
+}
+#probability-widget p.weight-896 {
+  font-weight: 896;
+}
+#probability-widget p.weight-897 {
+  font-weight: 897;
+}
+#probability-widget p.weight-898 {
+  font-weight: 898;
+}
+#probability-widget p.weight-899 {
+  font-weight: 899;
+}
+#probability-widget p.weight-900 {
+  font-weight: 900;
+}
+
 @media only screen and (max-width: 600px) {
   .layout {
     display: block;

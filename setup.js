@@ -160,7 +160,14 @@ function update(color) {
     const prob = calculateProbability();
     d3.select("#probability-widget")
         .select("p")
-        .text((prob * 100).toFixed(2) + "%");
+        .text((prob * 100).toFixed(2) + "%")
+        .attr(
+            "class",
+            // 0 - 20 -> font weight 100
+            // X0 - X9.99 -> font weight X00
+            // 3.g. 42.2 -> font weight 400
+            `weight-${prob * 100 < 20 ? 100 : Math.floor(prob * 10) * 100}`
+        );
 }
 
 function calculateProbability() {
@@ -332,8 +339,7 @@ function calculateProbability() {
                 break;
         }
     }
-    console.log(prob);
-    return Math.pow(10, prob);
+    return 1 / (1 + Math.pow(Math.E, -1 * prob));
 }
 
 function updateMST(id, min_total, edges, shifted) {
@@ -575,5 +581,5 @@ export function setup() {
         .append("div")
         .attr("id", "probability-widget");
     prob.append("h3").text("Probability");
-    prob.append("p").text("0%");
+    prob.append("p").text("0.00%").attr("class", "weight-100");
 }
