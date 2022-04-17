@@ -1,8 +1,51 @@
 const root = d3.select("#ice-hockey-svg");
 let rootMatrix;
 
-let secondsLastShot = 30;
+const COEFFICIENTS = {
+    distance_to_attacking_net: -1.06335725866516,
+    all_total_edge: 0.109067920070306,
+    o_avg_edge: 0.109014820921215,
+    o_total_edge: -0.038473421953592,
+    distance_to_attacking_net_all_avg_edge: 0.047406873,
+    distance_to_attacking_net_all_total_edge: -0.007092325,
+    distance_to_attacking_net_o_avg_edge: -0.007178149,
+    distance_to_attacking_net_o_total_edge: -0.000244641,
+    distance_to_attacking_net_o_avg_edges_per_player: 0.48751338,
+    distance_to_attacking_net_d_avg_edge: 0.001410831,
+    distance_to_attacking_net_d_total_edge: 0.006337863,
+    distance_to_attacking_net_od_mst_ratio: 0.08577779,
+    distance_to_attacking_net_all_ocr: 0.080452988,
+    all_avg_edge_all_total_edge: -0.007172556,
+    all_avg_edge_o_avg_edge: 0.044713978,
+    all_avg_edge_o_total_edge: -0.021925863,
+    all_avg_edge_d_avg_edge: 0.021697258,
+    all_avg_edge_d_total_edge: 0.00760059,
+    all_avg_edge_od_mst_ratio: 0.085664045,
+    all_total_edge_o_avg_edge: -0.022334945,
+    all_total_edge_o_total_edge: 0.005948557,
+    all_total_edge_o_avg_edges_per_player: 0.077896382,
+    all_total_edge_d_avg_edge: -0.000565925,
+    all_total_edge_d_total_edge: 0.000365751,
+    all_total_edge_od_mst_ratio: 0.033630896,
+    all_total_edge_all_ocr: -0.103375312,
+    o_avg_edge_o_total_edge: 0.012808629,
+    o_avg_edge_o_avg_edges_per_player: 0.047041411,
+    o_avg_edge_d_avg_edge: -0.024105785,
+    o_avg_edge_d_total_edge: 0.014267651,
+    o_avg_edge_od_mst_ratio: -0.065625187,
+    o_avg_edge_all_ocr: 0.187977095,
+    o_total_edge_o_avg_edges_per_player: -0.123988255,
+    o_total_edge_d_avg_edge: 0.002378927,
+    o_total_edge_d_total_edge: -0.004726159,
+    o_total_edge_od_mst_ratio: -0.062027859,
+    o_total_edge_all_ocr: 0.043203087,
+    d_avg_edge_d_total_edge: -0.010194885,
+    d_avg_edge_od_mst_ratio: 0.109014821,
+    d_total_edge_od_mst_ratio: -0.003047942,
+};
 
+// BLUE = offense
+// ORANGE = defense
 let bluePoints = [
     { x: -40, y: 25, id: "O1" },
     { x: -40, y: -25, id: "O2" },
@@ -95,28 +138,202 @@ function mst(points) {
     return [edges, min_total];
 }
 
-function update(color) {
-    const { original, translation } = all_points[color];
-    let shifted = _.map(_.zip(original, translation), ([p, s]) => ({
+function shiftedPoints({ original, translation }) {
+    return _.map(_.zip(original, translation), ([p, s]) => ({
         id: p.id,
         x: p.x + s.x,
         y: p.y + s.y,
     }));
+}
 
-    let full_shifted = _.flatMap(all_points, (points) => {
-        const { original, translation } = points;
-        return _.map(_.zip(original, translation), ([p, s]) => ({
-            id: p.id,
-            x: p.x + s.x,
-            y: p.y + s.y,
-        }));
-    });
+function update(color) {
+    let shifted = shiftedPoints(all_points[color]);
+
+    let full_shifted = _.flatMap(all_points, (points) => shiftedPoints(points));
 
     const [edges, min_total] = mst(shifted);
     const [full_edges, full_min_total] = mst(full_shifted);
 
     updateMST(color, min_total, edges, shifted);
     updateMST("overall", full_min_total, full_edges, full_shifted);
+
+    const prob = calculateProbability();
+    d3.select("#probability-widget")
+        .select("p")
+        .text((prob * 100).toFixed(2) + "%");
+}
+
+function calculateProbability() {
+    let prob = 0;
+    const [o_edges, o_total_edge] = mst(shiftedPoints(all_points.blue));
+    const [d_edges, d_total_edge] = mst(shiftedPoints(all_points.orange));
+    const full_shifted = _.flatMap(all_points, (points) =>
+        shiftedPoints(points)
+    );
+    const [all_edges, all_total_edge] = mst(full_shifted);
+
+    const puckPosition = _.find(shiftedPoints(all_points.blue), ["id", "O1"]);
+    // goal: x=11, y=42.5
+    const dist_net = Math.sqrt(
+        Math.pow(puckPosition.x - 11, 2) + Math.pow(puckPosition.y - 42.5, 2)
+    );
+
+    const o_avg_edge = o_total_edge / o_edges.length;
+    const d_avg_edge = d_total_edge / d_edges.length;
+    const full_avg_edge = all_total_edge / all_edges.length;
+    const od_mst_ratio = o_total_edge / d_total_edge;
+
+    function edges_per_player(edges) {
+        const counter = _.countBy(_.flatten(edges), (v) => v);
+        return _.mean(_.values(counter));
+    }
+
+    const o_avg_edges_per_player = edges_per_player(o_edges);
+
+    function opponent_connectedness_ratio(all_edges) {
+        const opponent_edges = _.map(all_edges, ([v1, v2]) => {
+            return v1[0] !== v2[0] ? 1 : 0;
+        });
+        return _.mean(opponent_edges);
+    }
+
+    const ocr = opponent_connectedness_ratio(all_edges);
+
+    for (const feature in COEFFICIENTS) {
+        switch (feature) {
+            case "distance_to_attacking_net":
+                prob += COEFFICIENTS[feature] * dist_net;
+                break;
+            case "all_total_edge":
+                prob += COEFFICIENTS[feature] * all_total_edge;
+                break;
+            case "o_avg_edge":
+                prob += COEFFICIENTS[feature] * o_avg_edge;
+                break;
+            case "o_total_edge":
+                prob += COEFFICIENTS[feature] * o_total_edge;
+                break;
+            case "distance_to_attacking_net_all_avg_edge":
+                prob += COEFFICIENTS[feature] * dist_net * full_avg_edge;
+                break;
+            case "distance_to_attacking_net_all_total_edge":
+                prob += COEFFICIENTS[feature] * dist_net * all_total_edge;
+                break;
+            case "distance_to_attacking_net_o_avg_edge":
+                prob += COEFFICIENTS[feature] * dist_net * o_avg_edge;
+                break;
+            case "distance_to_attacking_net_o_total_edge":
+                prob += COEFFICIENTS[feature] * dist_net * o_total_edge;
+                break;
+            case "distance_to_attacking_net_o_avg_edges_per_player":
+                prob += COEFFICIENTS[feature] * o_avg_edges_per_player;
+                break;
+            case "distance_to_attacking_net_d_avg_edge":
+                prob += COEFFICIENTS[feature] * dist_net * d_avg_edge;
+                break;
+            case "distance_to_attacking_net_d_total_edge":
+                prob += COEFFICIENTS[feature] * dist_net * d_total_edge;
+                break;
+            case "distance_to_attacking_net_od_mst_ratio":
+                prob += COEFFICIENTS[feature] * od_mst_ratio;
+                break;
+            case "distance_to_attacking_net_all_ocr":
+                prob += COEFFICIENTS[feature] * dist_net * ocr;
+                break;
+            case "all_avg_edge_all_total_edge":
+                prob += COEFFICIENTS[feature] * full_avg_edge * all_total_edge;
+                break;
+            case "all_avg_edge_o_avg_edge":
+                prob += COEFFICIENTS[feature] * full_avg_edge * o_avg_edge;
+                break;
+            case "all_avg_edge_o_total_edge":
+                prob += COEFFICIENTS[feature] * full_avg_edge * o_total_edge;
+                break;
+            case "all_avg_edge_d_avg_edge":
+                prob += COEFFICIENTS[feature] * full_avg_edge * d_avg_edge;
+                break;
+            case "all_avg_edge_d_total_edge":
+                prob += COEFFICIENTS[feature] * full_avg_edge * d_total_edge;
+                break;
+            case "all_avg_edge_od_mst_ratio":
+                prob += COEFFICIENTS[feature] * full_avg_edge * od_mst_ratio;
+                break;
+            case "all_total_edge_o_avg_edge":
+                prob += COEFFICIENTS[feature] * all_total_edge * o_avg_edge;
+                break;
+            case "all_total_edge_o_total_edge":
+                prob += COEFFICIENTS[feature] * all_total_edge * o_total_edge;
+                break;
+            case "all_total_edge_o_avg_edges_per_player":
+                prob +=
+                    COEFFICIENTS[feature] *
+                    all_total_edge *
+                    o_avg_edges_per_player;
+                break;
+            case "all_total_edge_d_avg_edge":
+                prob += COEFFICIENTS[feature] * all_total_edge * d_avg_edge;
+                break;
+            case "all_total_edge_d_total_edge":
+                prob += COEFFICIENTS[feature] * all_total_edge * d_total_edge;
+                break;
+            case "all_total_edge_od_mst_ratio":
+                prob += COEFFICIENTS[feature] * all_total_edge * od_mst_ratio;
+                break;
+            case "all_total_edge_all_ocr":
+                prob += COEFFICIENTS[feature] * all_total_edge * ocr;
+                break;
+            case "o_avg_edge_o_total_edge":
+                prob += COEFFICIENTS[feature] * o_avg_edge * o_total_edge;
+                break;
+            case "o_avg_edge_o_avg_edges_per_player":
+                prob +=
+                    COEFFICIENTS[feature] * o_avg_edge * o_avg_edges_per_player;
+                break;
+            case "o_avg_edge_d_avg_edge":
+                prob += COEFFICIENTS[feature] * o_avg_edge * d_avg_edge;
+                break;
+            case "o_avg_edge_d_total_edge":
+                prob += COEFFICIENTS[feature] * o_avg_edge * d_total_edge;
+                break;
+            case "o_avg_edge_od_mst_ratio":
+                prob += COEFFICIENTS[feature] * o_avg_edge * od_mst_ratio;
+                break;
+            case "o_avg_edge_all_ocr":
+                prob += COEFFICIENTS[feature] * o_avg_edge * ocr;
+                break;
+            case "o_total_edge_o_avg_edges_per_player":
+                prob +=
+                    COEFFICIENTS[feature] *
+                    o_total_edge *
+                    o_avg_edges_per_player;
+                break;
+            case "o_total_edge_d_avg_edge":
+                prob += COEFFICIENTS[feature] * o_total_edge * d_avg_edge;
+                break;
+            case "o_total_edge_d_total_edge":
+                prob += COEFFICIENTS[feature] * o_total_edge * d_total_edge;
+                break;
+            case "o_total_edge_od_mst_ratio":
+                prob += COEFFICIENTS[feature] * o_total_edge * od_mst_ratio;
+                break;
+            case "o_total_edge_all_ocr":
+                prob += COEFFICIENTS[feature] * o_total_edge * ocr;
+                break;
+            case "d_avg_edge_d_total_edge":
+                prob += COEFFICIENTS[feature] * d_avg_edge * d_total_edge;
+                break;
+            case "d_avg_edge_od_mst_ratio":
+                prob += COEFFICIENTS[feature] * d_avg_edge * od_mst_ratio;
+                break;
+            case "d_total_edge_od_mst_ratio":
+                prob += COEFFICIENTS[feature] * d_total_edge * od_mst_ratio;
+                break;
+            default:
+                break;
+        }
+    }
+    console.log(prob);
+    return Math.pow(10, prob);
 }
 
 function updateMST(id, min_total, edges, shifted) {
@@ -353,40 +570,10 @@ export function setup() {
 
     update("blue");
 
-    const sls = d3
+    const prob = d3
         .select("#custom-bar")
         .append("div")
-        .attr("id", "second-last-shot-widget");
-    sls.append("h3").text("Other");
-    sls.append("label")
-        .attr("id", "seconds-last-shot-label")
-        .attr("for", "seconds-last-shot")
-        .text("Seconds Since Last Shot:");
-    sls.append("input")
-        .attr("id", "seconds-last-shot-range")
-        .attr("name", "seconds-last-shot")
-        .attr("type", "range")
-        .attr("min", 0)
-        .attr("max", 120)
-        .property("value", secondsLastShot)
-        .on("change", (e) => {
-            secondsLastShot = e.target.value;
-            d3.select("#seconds-last-shot-box").property(
-                "value",
-                e.target.value
-            );
-        });
-    sls.append("input")
-        .attr("type", "number")
-        .attr("id", "seconds-last-shot-box")
-        .attr("min", 0)
-        .attr("max", 120)
-        .property("value", secondsLastShot)
-        .on("change", (e) => {
-            secondsLastShot = e.target.value;
-            d3.select("#seconds-last-shot-range").property(
-                "value",
-                e.target.value
-            );
-        });
+        .attr("id", "probability-widget");
+    prob.append("h3").text("Probability");
+    prob.append("p").text("0%");
 }
