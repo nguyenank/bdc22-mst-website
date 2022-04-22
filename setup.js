@@ -185,6 +185,8 @@ function calculateProbability() {
         Math.pow(puckPosition.x - 11, 2) + Math.pow(puckPosition.y - 42.5, 2)
     );
 
+    console.log(dist_net);
+
     const o_avg_edge = o_total_edge / o_edges.length;
     const d_avg_edge = d_total_edge / d_edges.length;
     const full_avg_edge = all_total_edge / all_edges.length;
@@ -406,6 +408,8 @@ function setUpPointSet(points, color) {
                 .text(d.id);
             if (d.id === "O1") {
                 d3.select(this)
+                    .attr("id", "possession-dot")
+                    .attr("class", "posession-dot")
                     .append("path")
                     .attr(
                         "d",
@@ -463,6 +467,43 @@ function setUpPointSet(points, color) {
             },
         },
     });
+    if (color == "blue") {
+        interact("#possession-dot").draggable({
+            modifiers: [
+                interact.modifiers.restrictRect({
+                    restriction: d3.select("#possession-perimeter").node(),
+                    elementRect: { left: 0, top: 0, bottom: 1, right: 0.8 },
+                }),
+            ],
+            listeners: {
+                move(event) {
+                    event.preventDefault();
+                    // regen root Matrix to account for window size changes
+                    rootMatrix = root.node().getScreenCTM();
+                    let x;
+                    let y;
+                    let translation = all_points[color].translation;
+                    translation = translation.map((point) => {
+                        if (
+                            point.id === d3.select(event.target).attr("data-id")
+                        ) {
+                            point.x += event.dx / rootMatrix.a;
+                            point.y += event.dy / rootMatrix.d;
+                            x = point.x;
+                            y = point.y;
+                        }
+                        return point;
+                    });
+                    all_points[color].translation = translation;
+                    update(color);
+                    d3.select(event.target).attr(
+                        "transform",
+                        `translate(${x}, ${y})`
+                    );
+                },
+            },
+        });
+    }
 }
 
 export function setup() {

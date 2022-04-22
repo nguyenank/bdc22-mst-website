@@ -11,6 +11,10 @@ html {
   max-height: 80vh;
 }
 
+#possession-perimeter {
+  pointer-events: none;
+}
+
 footer {
   font-size: 0.75rem;
 }
