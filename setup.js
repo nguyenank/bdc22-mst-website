@@ -437,7 +437,8 @@ function setUpPointSet(points, color) {
     interact("." + color + "-dot").draggable({
         modifiers: [
             interact.modifiers.restrictRect({
-                restriction: "#transformations",
+                restriction: d3.select("#background").node(),
+                elementRect: { left: .5, top: .5, bottom: .5, right: 0.5 },
                 // endOnly: true
             }),
         ],
@@ -472,7 +473,7 @@ function setUpPointSet(points, color) {
             modifiers: [
                 interact.modifiers.restrictRect({
                     restriction: d3.select("#possession-perimeter").node(),
-                    elementRect: { left: 0, top: 0, bottom: 1, right: 0.8 },
+                    elementRect: { left: 0.5, top: 0.5, bottom: 0.5, right: 0.5 },
                 }),
             ],
             listeners: {
