@@ -188,7 +188,7 @@ function calculateProbability() {
     const o_avg_edge = o_total_edge / o_edges.length;
     const d_avg_edge = d_total_edge / d_edges.length;
     const full_avg_edge = all_total_edge / all_edges.length;
-    const od_mst_ratio = o_total_edge / d_total_edge;
+    const od_mst_ratio = o_avg_edge / d_avg_edge;
 
     function edges_per_player(edges) {
         const counter = _.countBy(_.flatten(edges), (v) => v);
@@ -497,7 +497,7 @@ export function setup() {
             .attr("name", color + "-select")
             .attr("id", color + "-select");
 
-        for (let i = 0; i <= 6; i += 1) {
+        for (let i = 2; i <= 6; i += 1) {
             select
                 .append("option")
                 .attr("value", i)
