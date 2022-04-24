@@ -483,8 +483,8 @@ function setUpPointSet(points, color) {
                           L 1.75 3.25
                           L 1.25 2.75
                           L -3.05 1.5
-                          L -3.05 0.5
-                          L -2.75 0.75
+                          L -3.05 -0.5
+                          L -2.75 -0.75
                           Z
                         `
                     )
@@ -496,10 +496,11 @@ function setUpPointSet(points, color) {
                     .attr(
                         "d",
                         `
-                            M  2.75 -0.5
-                              L 0.25 -0.25
-                              L 0.75 1.25
-                              L 2.75 1.5
+                              M  0 -0.5
+                              L 3.1 -1
+                              L 3.5 0.5
+                              L 3.1 1.5
+                              L 0.3 1
                               Z
                             `
                     )
@@ -634,7 +635,7 @@ function setUpPuck() {
         .append("circle")
         .attr("cx", puck.original.x)
         .attr("cy", puck.original.y)
-        .attr("r", 1.25)
+        .attr("r", 1.5)
         .attr("class", "puck");
     interact(".puck").draggable({
         modifiers: [
