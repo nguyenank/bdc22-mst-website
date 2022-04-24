@@ -2,66 +2,67 @@ const root = d3.select("#ice-hockey-svg");
 let rootMatrix;
 
 const COEFFICIENTS = {
-    distance_to_attacking_net: -1.06335725866516,
-    all_total_edge: 0.109067920070306,
-    o_avg_edge: 0.109014820921215,
-    o_total_edge: -0.038473421953592,
-    distance_to_attacking_net_all_avg_edge: 0.047406873,
-    distance_to_attacking_net_all_total_edge: -0.007092325,
-    distance_to_attacking_net_o_avg_edge: -0.007178149,
-    distance_to_attacking_net_o_total_edge: -0.000244641,
-    distance_to_attacking_net_o_avg_edges_per_player: 0.48751338,
-    distance_to_attacking_net_d_avg_edge: 0.001410831,
-    distance_to_attacking_net_d_total_edge: 0.006337863,
-    distance_to_attacking_net_od_mst_ratio: 0.08577779,
-    distance_to_attacking_net_all_ocr: 0.080452988,
-    all_avg_edge_all_total_edge: -0.007172556,
-    all_avg_edge_o_avg_edge: 0.044713978,
-    all_avg_edge_o_total_edge: -0.021925863,
-    all_avg_edge_d_avg_edge: 0.021697258,
-    all_avg_edge_d_total_edge: 0.00760059,
-    all_avg_edge_od_mst_ratio: 0.085664045,
-    all_total_edge_o_avg_edge: -0.022334945,
-    all_total_edge_o_total_edge: 0.005948557,
-    all_total_edge_o_avg_edges_per_player: 0.077896382,
-    all_total_edge_d_avg_edge: -0.000565925,
-    all_total_edge_d_total_edge: 0.000365751,
-    all_total_edge_od_mst_ratio: 0.033630896,
-    all_total_edge_all_ocr: -0.103375312,
-    o_avg_edge_o_total_edge: 0.012808629,
-    o_avg_edge_o_avg_edges_per_player: 0.047041411,
-    o_avg_edge_d_avg_edge: -0.024105785,
-    o_avg_edge_d_total_edge: 0.014267651,
-    o_avg_edge_od_mst_ratio: -0.065625187,
-    o_avg_edge_all_ocr: 0.187977095,
-    o_total_edge_o_avg_edges_per_player: -0.123988255,
-    o_total_edge_d_avg_edge: 0.002378927,
-    o_total_edge_d_total_edge: -0.004726159,
-    o_total_edge_od_mst_ratio: -0.062027859,
-    o_total_edge_all_ocr: 0.043203087,
-    d_avg_edge_d_total_edge: -0.010194885,
-    d_avg_edge_od_mst_ratio: 0.109014821,
-    d_total_edge_od_mst_ratio: -0.003047942,
+    distance_to_attacking_net: -0.8136195893408792,
+    all_total_edge: 0.44641096741755704,
+    o_avg_edge: 0.7591561782035613,
+    o_total_edge: -0.13626790684717613,
+    distance_to_attacking_net_all_avg_edge: 0.004418858972436258,
+    distance_to_attacking_net_all_total_edge: 0.0025258491554741302,
+    distance_to_attacking_net_o_avg_edge: -0.011484871491342245,
+    distance_to_attacking_net_o_total_edge: -0.0031081699734241052,
+    distance_to_attacking_net_o_avg_edges_per_player: 0.19006035715857053,
+    distance_to_attacking_net_d_avg_edge: 0.020719398701219652,
+    distance_to_attacking_net_d_total_edge: -0.0011304647509934552,
+    distance_to_attacking_net_od_mst_ratio: 0.1757308751159742,
+    distance_to_attacking_net_all_ocr: 0.16556908095642012,
+    all_avg_edge_all_total_edge: -0.0035317390352814114,
+    all_avg_edge_o_avg_edge: 0.007552112708073338,
+    all_avg_edge_o_total_edge: -0.005362062825118257,
+    all_avg_edge_o_avg_edges_per_player: -1.3116734057439845,
+    all_avg_edge_d_avg_edge: 0.1566504672207727,
+    all_avg_edge_d_total_edge: -0.02014843010254504,
+    all_avg_edge_od_mst_ratio: 0.04086305204493874,
+    all_total_edge_o_avg_edge: 0.02216272539889931,
+    all_total_edge_o_total_edge: -0.0011726707290296622,
+    all_total_edge_o_avg_edges_per_player: 0.07715874930737107,
+    all_total_edge_d_avg_edge: -0.038476874178900125,
+    all_total_edge_d_total_edge: 0.0025662246495935957,
+    all_total_edge_od_mst_ratio: -0.21254774710319194,
+    all_total_edge_all_ocr: -0.30652819905416157,
+    o_avg_edge_o_total_edge: 0.0017555430248502055,
+    o_avg_edge_o_avg_edges_per_player: -0.19757766679203442,
+    o_avg_edge_d_avg_edge: -0.06675441576410177,
+    o_avg_edge_d_total_edge: -0.01831526737974982,
+    o_avg_edge_od_mst_ratio: -0.2388628090478134,
+    o_total_edge_o_avg_edges_per_player: -0.07495814690246014,
+    o_total_edge_d_avg_edge: 0.01019807272992537,
+    o_total_edge_d_total_edge: 0.002353260319754573,
+    o_total_edge_od_mst_ratio: 0.03201339370941295,
+    o_total_edge_all_ocr: 0.31725285827598415,
+    d_avg_edge_d_total_edge: 0.011431063135494211,
+    d_avg_edge_od_mst_ratio: 0.7591561782035574,
+    d_total_edge_od_mst_ratio: 0.11424597623672843,
+    intercept: 0.19408805308026814,
 };
-
 // BLUE = offense
 // ORANGE = defense
 let bluePoints = [
-    { x: -40, y: 25, id: "O1" },
-    { x: -40, y: -25, id: "O2" },
-    { x: -40, y: 0, id: "O3" },
-    { x: -70, y: 12.5, id: "O4" },
-    { x: -70, y: -12.5, id: "O5" },
-    { x: -55, y: 0, id: "O6" },
+    { x: -20, y: 25, id: "O1" },
+    { x: -20, y: -25, id: "O2" },
+    { x: -20, y: 0, id: "O3" },
+    { x: -50, y: 12.5, id: "O4" },
+    { x: -50, y: -12.5, id: "O5" },
+    { x: -35, y: 0, id: "O6" },
 ];
 
 let orangePoints = [
-    { x: -20, y: 25, id: "D1" },
-    { x: -20, y: -25, id: "D2" },
-    { x: -20, y: 0, id: "D3" },
-    { x: -50, y: 12.5, id: "D4" },
-    { x: -50, y: -12.5, id: "D5" },
-    { x: -35, y: 0, id: "D6" },
+    { x: -85, y: 0, id: "DG" },
+    { x: -40, y: 25, id: "D1" },
+    { x: -40, y: -25, id: "D2" },
+    { x: -40, y: 0, id: "D3" },
+    { x: -70, y: 12.5, id: "D4" },
+    { x: -70, y: -12.5, id: "D5" },
+    { x: -55, y: 0, id: "D6" },
 ];
 
 function coordTransform(point) {
@@ -70,6 +71,30 @@ function coordTransform(point) {
 
 bluePoints = bluePoints.map(coordTransform);
 orangePoints = orangePoints.map(coordTransform);
+
+// // EXAMPLE 37 !!!!!
+// bluePoints = [
+//     { x: 19.93546706, y: 39.26183114, id: "O1" },
+//     { x: 35.55114008, y: 66.15101048, id: "O2" },
+//     { x: 66.70686142, y: 19.69801718, id: "O3" },
+//     { x: 72.65819587, y: 42.08232138, id: "O4" },
+//     { x: 30, y: 55, id: "O5" },
+//     { x: 45, y: 42.5, id: "O6" },
+// ];
+//
+// orangePoints = [
+//     { x: 15.11338869, y: 41.1755338, id: "DG" },
+//     { x: 37.21875084, y: 41.71660071, id: "D1" },
+//     { x: 21.7604017, y: 47.67518948, id: "D2" },
+//     { x: 22.15365322, y: 34.45199024, id: "D3" },
+//     { x: 61.53136585, y: 32.84962419, id: "D4" },
+//     { x: 50, y: 55, id: "D5" },
+//     { x: 65, y: 42.5, id: "D6" },
+// ];
+//
+// bluePoints = bluePoints.map((p) => ({ ...p, y: 85 - p.y }));
+// orangePoints = orangePoints.map((p) => ({ ...p, y: 85 - p.y }));
+// /// END EXAMPLE 37
 
 let all_points = {
     blue: {
@@ -81,14 +106,26 @@ let all_points = {
         })),
     },
     orange: {
-        original: _.slice(orangePoints, 0, 5),
-        translation: _.map(_.slice(orangePoints, 0, 5), (p) => ({
+        original: _.slice(orangePoints, 0, 6),
+        translation: _.map(_.slice(orangePoints, 0, 6), (p) => ({
             id: p.id,
             x: 0,
             y: 0,
         })),
     },
 };
+
+let puck = {
+    original: { x: 46, y: 34 },
+    translation: { x: 0, y: 0 },
+};
+
+// // EXAMPLE 37
+// puck = {
+//     original: { x: 68, y: 44 },
+//     translation: { x: 0, y: 0 },
+// };
+// // END EXAMPLE 37
 
 function mst(points) {
     // https://favtutor.com/blogs/prims-algorithm-python
@@ -149,7 +186,10 @@ function shiftedPoints({ original, translation }) {
 function update(color) {
     let shifted = shiftedPoints(all_points[color]);
 
-    let full_shifted = _.flatMap(all_points, (points) => shiftedPoints(points));
+    const full_shifted = _.filter(
+        _.flatMap(all_points, (points) => shiftedPoints(points)),
+        (o) => o.id !== "DG"
+    );
 
     const [edges, min_total] = mst(shifted);
     const [full_edges, full_min_total] = mst(full_shifted);
@@ -157,6 +197,10 @@ function update(color) {
     updateMST(color, min_total, edges, shifted);
     updateMST("overall", full_min_total, full_edges, full_shifted);
 
+    updateProbability();
+}
+
+function updateProbability() {
     const prob = calculateProbability();
     d3.select("#probability-widget")
         .select("p")
@@ -174,18 +218,22 @@ function calculateProbability() {
     let prob = 0;
     const [o_edges, o_total_edge] = mst(shiftedPoints(all_points.blue));
     const [d_edges, d_total_edge] = mst(shiftedPoints(all_points.orange));
-    const full_shifted = _.flatMap(all_points, (points) =>
-        shiftedPoints(points)
+
+    // exclude goalie from full MST
+    const full_shifted = _.filter(
+        _.flatMap(all_points, (points) => shiftedPoints(points)),
+        (o) => o.id !== "DG"
     );
     const [all_edges, all_total_edge] = mst(full_shifted);
 
-    const puckPosition = _.find(shiftedPoints(all_points.blue), ["id", "O1"]);
+    const puckPosition = {
+        x: puck.original.x + puck.translation.x,
+        y: puck.original.y + puck.translation.y,
+    };
     // goal: x=11, y=42.5
     const dist_net = Math.sqrt(
         Math.pow(puckPosition.x - 11, 2) + Math.pow(puckPosition.y - 42.5, 2)
     );
-
-    console.log(dist_net);
 
     const o_avg_edge = o_total_edge / o_edges.length;
     const d_avg_edge = d_total_edge / d_edges.length;
@@ -235,7 +283,8 @@ function calculateProbability() {
                 prob += COEFFICIENTS[feature] * dist_net * o_total_edge;
                 break;
             case "distance_to_attacking_net_o_avg_edges_per_player":
-                prob += COEFFICIENTS[feature] * o_avg_edges_per_player;
+                prob +=
+                    COEFFICIENTS[feature] * dist_net * o_avg_edges_per_player;
                 break;
             case "distance_to_attacking_net_d_avg_edge":
                 prob += COEFFICIENTS[feature] * dist_net * d_avg_edge;
@@ -244,7 +293,7 @@ function calculateProbability() {
                 prob += COEFFICIENTS[feature] * dist_net * d_total_edge;
                 break;
             case "distance_to_attacking_net_od_mst_ratio":
-                prob += COEFFICIENTS[feature] * od_mst_ratio;
+                prob += COEFFICIENTS[feature] * dist_net * od_mst_ratio;
                 break;
             case "distance_to_attacking_net_all_ocr":
                 prob += COEFFICIENTS[feature] * dist_net * ocr;
@@ -257,6 +306,12 @@ function calculateProbability() {
                 break;
             case "all_avg_edge_o_total_edge":
                 prob += COEFFICIENTS[feature] * full_avg_edge * o_total_edge;
+                break;
+            case "all_avg_edge_o_avg_edges_per_player":
+                prob +=
+                    COEFFICIENTS[feature] *
+                    full_avg_edge *
+                    o_avg_edges_per_player;
                 break;
             case "all_avg_edge_d_avg_edge":
                 prob += COEFFICIENTS[feature] * full_avg_edge * d_avg_edge;
@@ -307,9 +362,9 @@ function calculateProbability() {
             case "o_avg_edge_od_mst_ratio":
                 prob += COEFFICIENTS[feature] * o_avg_edge * od_mst_ratio;
                 break;
-            case "o_avg_edge_all_ocr":
-                prob += COEFFICIENTS[feature] * o_avg_edge * ocr;
-                break;
+            // case "o_avg_edge_all_ocr":
+            //     prob += COEFFICIENTS[feature] * o_avg_edge * ocr;
+            //     break;
             case "o_total_edge_o_avg_edges_per_player":
                 prob +=
                     COEFFICIENTS[feature] *
@@ -336,6 +391,9 @@ function calculateProbability() {
                 break;
             case "d_total_edge_od_mst_ratio":
                 prob += COEFFICIENTS[feature] * d_total_edge * od_mst_ratio;
+                break;
+            case "intercept":
+                prob += COEFFICIENTS[feature];
                 break;
             default:
                 break;
@@ -396,7 +454,7 @@ function setUpPointSet(points, color) {
                 .append("circle")
                 .attr("cx", d.x)
                 .attr("cy", d.y)
-                .attr("r", 3)
+                .attr("r", 2.5)
                 .attr("class", color);
             d3.select(this)
                 .append("text")
@@ -406,29 +464,87 @@ function setUpPointSet(points, color) {
                 .attr("dominant-baseline", "middle")
                 .attr("class", "dot-text")
                 .text(d.id);
-            if (d.id === "O1") {
+
+            if (d.id === "DG") {
+                let cx = d.x;
+                let cy = d.y;
                 d3.select(this)
-                    .attr("id", "possession-dot")
-                    .attr("class", "posession-dot")
+                    .text("")
                     .append("path")
                     .attr(
                         "d",
-                        `M ${d.x + 3} ${d.y} L ${d.x + 4.1} ${d.y + 3.1}`
+                        `
+                          M -2.75 -1.5
+                          A 1.5 1 0 0 1 2.75 -0.5
+                          L 0.25 -0.25
+                          L 0.75 1.25
+                          L 2.75 1.5
+                          L 2.75 3.5
+                          L 1.75 3.25
+                          L 1.25 2.75
+                          L -3.05 1.5
+                          L -3.05 0.5
+                          L -2.75 0.75
+                          Z
+                        `
                     )
-                    .attr("class", "stick");
+                    .attr("transform", `translate(${cx},${cy}) scale(0.8)`)
+                    .attr("class", "helmet");
+
                 d3.select(this)
                     .append("path")
                     .attr(
                         "d",
-                        `M ${d.x + 4} ${d.y + 3} L ${d.x + 5.5} ${d.y + 2.85} `
+                        `
+                            M  2.75 -0.5
+                              L 0.25 -0.25
+                              L 0.75 1.25
+                              L 2.75 1.5
+                              Z
+                            `
                     )
-                    .attr("class", "stick-head");
+                    .attr("transform", `translate(${cx},${cy}) scale(0.8)`)
+                    .attr("class", "grating-back");
+
                 d3.select(this)
-                    .append("circle")
-                    .attr("cx", d.x + 4.5)
-                    .attr("cy", d.y + 2)
-                    .attr("r", 0.5)
-                    .attr("class", "pick");
+                    .append("path")
+                    .attr(
+                        "d",
+                        `
+                        M 0  -0.5
+                        L  3.1 -1
+
+                        M 0.1 0
+                        L 3.35 -0.25
+
+                        M 0.2 0.5
+                        L 3.35 0.5
+
+                        M 0.3 1
+                        L 3.25 1.5
+
+                        M 0 -0.5
+                        L 0.3 1
+
+                        M 0.75 0.615
+                        L 1 0.5
+                        L 0.75 1
+
+                        M 1.5 0.615
+                        L 1.8 0.5
+                        L 1.5 1.25
+
+                        M 2.25 -0.75
+                        L 2.75 0.5
+                        L 2.25 1.25
+
+                        M 3.1 -1
+                        L 3.5 0.5
+                        L 3.1 1.5
+                    `
+                    )
+                    .attr("transform", `translate(${cx},${cy}) scale(0.8)`)
+                    .attr("class", "helmet-grating");
             }
         });
 
@@ -438,7 +554,7 @@ function setUpPointSet(points, color) {
         modifiers: [
             interact.modifiers.restrictRect({
                 restriction: d3.select("#background").node(),
-                elementRect: { left: .5, top: .5, bottom: .5, right: 0.5 },
+                elementRect: { left: 0.5, top: 0.5, bottom: 0.5, right: 0.5 },
                 // endOnly: true
             }),
         ],
@@ -473,7 +589,12 @@ function setUpPointSet(points, color) {
             modifiers: [
                 interact.modifiers.restrictRect({
                     restriction: d3.select("#possession-perimeter").node(),
-                    elementRect: { left: 0.5, top: 0.5, bottom: 0.5, right: 0.5 },
+                    elementRect: {
+                        left: 0.5,
+                        top: 0.5,
+                        bottom: 0.5,
+                        right: 0.5,
+                    },
                 }),
             ],
             listeners: {
@@ -507,6 +628,44 @@ function setUpPointSet(points, color) {
     }
 }
 
+function setUpPuck() {
+    d3.select("#transformations")
+        .attr("clip-path", "url(#clipBorder)")
+        .append("circle")
+        .attr("cx", puck.original.x)
+        .attr("cy", puck.original.y)
+        .attr("r", 1.25)
+        .attr("class", "puck");
+    interact(".puck").draggable({
+        modifiers: [
+            interact.modifiers.restrictRect({
+                restriction: d3.select("#background").node(),
+                elementRect: { left: 0.5, top: 0.5, bottom: 0.5, right: 0.5 },
+                // endOnly: true
+            }),
+        ],
+        listeners: {
+            move(event) {
+                event.preventDefault();
+                // regen root Matrix to account for window size changes
+                rootMatrix = root.node().getScreenCTM();
+
+                puck.translation = {
+                    x: puck.translation.x + event.dx / rootMatrix.a,
+                    y: puck.translation.y + event.dy / rootMatrix.d,
+                };
+
+                d3.select(event.target).attr(
+                    "transform",
+                    `translate(${puck.translation.x}, ${puck.translation.y})`
+                );
+
+                updateProbability();
+            },
+        },
+    });
+}
+
 export function setup() {
     let overallG = d3
         .select("#transformations")
@@ -517,6 +676,11 @@ export function setup() {
         .attr("id", "mst");
     for (const color in all_points) {
         const points = all_points[color].original;
+        let colorG = d3
+            .select("#transformations")
+            .attr("clip-path", "url(#clipBorder)")
+            .append("g")
+            .attr("id", color);
         let widget = d3.select("#custom-bar").append("div").attr("id", color);
 
         widget
@@ -525,16 +689,10 @@ export function setup() {
             .style("display", "inline-block")
             .text(color === "blue" ? "Offensive" : "Defensive");
 
-        let colorG = d3
-            .select("#transformations")
-            .attr("clip-path", "url(#clipBorder)")
-            .append("g")
-            .attr("id", color);
-
         let select = widget
             .append("label")
             .attr("for", color + "-select")
-            .text("# Players:")
+            .text("# Skaters:")
             .append("select")
             .attr("name", color + "-select")
             .attr("id", color + "-select");
@@ -548,8 +706,10 @@ export function setup() {
         }
 
         select.on("change", function () {
-            const value = d3.select(this).property("value");
-
+            let value = parseInt(d3.select(this).property("value"));
+            // add 1 to accomodate goalie for orange
+            value = color === "orange" ? value + 1 : value;
+            console.log(value);
             const points = color === "blue" ? bluePoints : orangePoints;
             all_points[color] = {
                 original: _.slice(points, 0, value),
@@ -586,8 +746,9 @@ export function setup() {
 
         widget.append("p").text("0 ft");
 
-        setUpPointSet(_.slice(points, 0, 5), color);
+        setUpPointSet(_.slice(points, 0, color === "blue" ? 5 : 6), color);
     }
+    setUpPuck();
 
     let widget = d3.select("#custom-bar").append("div").attr("id", "overall");
     widget.append("h3").attr("class", "overall").text("Overall");
@@ -624,4 +785,6 @@ export function setup() {
         .attr("id", "probability-widget");
     prob.append("h3").text("Probability");
     prob.append("p").text("0.00%").attr("class", "weight-100");
+
+    updateProbability();
 }

@@ -3,7 +3,7 @@ $blue: rgba(53, 171, 169, 1);
 $orange-translucent: rgba(234, 142, 72, 0.4);
 $orange: rgba(234, 142, 72, 1);
 $grey-translucent: rgba(40, 40, 40, 0.4);
-$grey: rgb(150,150,150);
+$grey: rgb(150, 150, 150);
 
 html {
   font-family: "Public Sans";
@@ -39,23 +39,40 @@ circle {
   &.orange {
     fill: $orange;
   }
+
+  &.puck {
+    fill: black;
+  }
+}
+// .stick {
+//   stroke-width: 0.3;
+//   stroke: #444;
+//   fill: transparent;
+// }
+//
+// .stick-head {
+//   stroke-width: 0.5;
+//   stroke: #ccc;
+//   fill: transparent;
+// }
+
+.helmet {
+  fill: $orange;
 }
 
-.stick {
-  stroke-width: 0.3;
-  stroke: #444;
+.helmet-grating {
+  stroke-width: 0.2;
+  stroke: white;
   fill: transparent;
 }
 
-.stick-head {
-  stroke-width: 0.5;
-  stroke: #ccc;
-  fill: transparent;
+.grating-back {
+  fill: $orange-translucent;
 }
 
 .dot-text {
   fill: white;
-  font-size: 0.25rem;
+  font-size: 0.175rem;
   font-weight: bold;
 }
 
@@ -96,7 +113,7 @@ line {
 
   h3 {
     text-transform: capitalize;
-    text-decoration: underline;
+    text-decoration: underline black solid 0.2rem;
     margin-top: 0;
     margin-bottom: 0.2rem;
 

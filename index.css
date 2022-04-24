@@ -30,22 +30,27 @@ circle.blue {
 circle.orange {
   fill: #ea8e48;
 }
+circle.puck {
+  fill: black;
+}
 
-.stick {
-  stroke-width: 0.3;
-  stroke: #444;
+.helmet {
+  fill: #ea8e48;
+}
+
+.helmet-grating {
+  stroke-width: 0.2;
+  stroke: white;
   fill: transparent;
 }
 
-.stick-head {
-  stroke-width: 0.5;
-  stroke: #ccc;
-  fill: transparent;
+.grating-back {
+  fill: rgba(234, 142, 72, 0.4);
 }
 
 .dot-text {
   fill: white;
-  font-size: 0.25rem;
+  font-size: 0.175rem;
   font-weight: bold;
 }
 
@@ -82,7 +87,7 @@ line.overall {
 }
 #custom-bar h3 {
   text-transform: capitalize;
-  text-decoration: underline;
+  text-decoration: underline black solid 0.2rem;
   margin-top: 0;
   margin-bottom: 0.2rem;
 }
