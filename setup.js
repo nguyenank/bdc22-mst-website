@@ -527,11 +527,11 @@ function setUpPointSet(points, color) {
                         M 0 -0.5
                         L 0.3 1
 
-                        M 0.75 0.615
+                        M 0.75 -0.615
                         L 1 0.5
                         L 0.75 1
 
-                        M 1.5 0.615
+                        M 1.5 -0.615
                         L 1.8 0.5
                         L 1.5 1.25
 
