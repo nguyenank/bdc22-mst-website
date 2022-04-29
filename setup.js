@@ -743,7 +743,11 @@ export function setup() {
         .select("#custom-bar")
         .append("div")
         .attr("id", "probability-widget");
-    prob.append("h3").attr("class","probability-header").text("High-Danger Unblocked Shot Probability");
+    prob.append("h3")
+        .attr("class", "probability-header")
+        .text(
+            "Probability of a High-Danger Unblocked Shot within the Next Three Passes"
+        );
     prob.append("p").text("0.00%").attr("class", "weight-100");
 
     updateProbability();
