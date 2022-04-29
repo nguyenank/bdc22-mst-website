@@ -46,23 +46,24 @@ const COEFFICIENTS = {
 };
 // BLUE = offense
 // ORANGE = defense
+
 let bluePoints = [
-    { x: -20, y: 25, id: "O1" },
-    { x: -20, y: -25, id: "O2" },
-    { x: -20, y: 0, id: "O3" },
-    { x: -50, y: 12.5, id: "O4" },
-    { x: -50, y: -12.5, id: "O5" },
-    { x: -35, y: 0, id: "O6" },
+    { x: -20, y: 25, id: "PP1" },
+    { x: -20, y: -25, id: "PP2" },
+    { x: -20, y: 0, id: "PP3" },
+    { x: -50, y: 12.5, id: "PP4" },
+    { x: -50, y: -12.5, id: "PP5" },
+    { x: -35, y: 0, id: "PP6" },
 ];
 
 let orangePoints = [
-    { x: -85, y: 0, id: "DG" },
-    { x: -40, y: 25, id: "D1" },
-    { x: -40, y: -25, id: "D2" },
-    { x: -40, y: 0, id: "D3" },
-    { x: -70, y: 12.5, id: "D4" },
-    { x: -70, y: -12.5, id: "D5" },
-    { x: -55, y: 0, id: "D6" },
+    { x: -85, y: 0, id: "PKG" },
+    { x: -40, y: 25, id: "PK1" },
+    { x: -40, y: -25, id: "PK2" },
+    { x: -40, y: 0, id: "PK3" },
+    { x: -70, y: 12.5, id: "PK4" },
+    { x: -70, y: -12.5, id: "PK5" },
+    { x: -55, y: 0, id: "PK6" },
 ];
 
 function coordTransform(point) {
@@ -83,7 +84,7 @@ orangePoints = orangePoints.map(coordTransform);
 // ];
 //
 // orangePoints = [
-//     { x: 15.11338869, y: 41.1755338, id: "DG" },
+//     { x: 15.11338869, y: 41.1755338, id: "PKG" },
 //     { x: 37.21875084, y: 41.71660071, id: "D1" },
 //     { x: 21.7604017, y: 47.67518948, id: "D2" },
 //     { x: 22.15365322, y: 34.45199024, id: "D3" },
@@ -188,7 +189,7 @@ function update(color) {
 
     const full_shifted = _.filter(
         _.flatMap(all_points, (points) => shiftedPoints(points)),
-        (o) => o.id !== "DG"
+        (o) => o.id !== "PKG"
     );
 
     const [edges, min_total] = mst(shifted);
@@ -222,10 +223,10 @@ function calculateProbability() {
     // exclude goalie from full MST
     const full_shifted = _.filter(
         _.flatMap(all_points, (points) => shiftedPoints(points)),
-        (o) => o.id !== "DG"
+        (o) => o.id !== "PKG"
     );
-    const [all_edges, all_total_edge] = mst(full_shifted);
 
+    const [all_edges, all_total_edge] = mst(full_shifted);
     const puckPosition = {
         x: puck.original.x + puck.translation.x,
         y: puck.original.y + puck.translation.y,
@@ -249,7 +250,8 @@ function calculateProbability() {
 
     function opponent_connectedness_ratio(all_edges) {
         const opponent_edges = _.map(all_edges, ([v1, v2]) => {
-            return v1[0] !== v2[0] ? 1 : 0;
+            // P of PP versus K of PK
+            return v1[1] !== v2[1] ? 1 : 0;
         });
         return _.mean(opponent_edges);
     }
@@ -403,10 +405,10 @@ function calculateProbability() {
 }
 
 function updateMST(id, min_total, edges, shifted) {
-    d3.select("#custom-bar")
-        .select("#" + id)
-        .select("p")
-        .text(min_total.toFixed(2) + "ft");
+    // d3.select("#custom-bar")
+    //     .select("#" + id)
+    //     .select("p")
+    //     .text(min_total.toFixed(2) + "ft");
 
     d3.select("#transformations")
         .select("#" + id)
@@ -465,7 +467,7 @@ function setUpPointSet(points, color) {
                 .attr("class", "dot-text")
                 .text(d.id);
 
-            if (d.id === "DG") {
+            if (d.id === "PKG") {
                 let cx = d.x;
                 let cy = d.y;
                 d3.select(this)
@@ -585,48 +587,6 @@ function setUpPointSet(points, color) {
             },
         },
     });
-    if (color == "blue") {
-        interact("#possession-dot").draggable({
-            modifiers: [
-                interact.modifiers.restrictRect({
-                    restriction: d3.select("#possession-perimeter").node(),
-                    elementRect: {
-                        left: 0.5,
-                        top: 0.5,
-                        bottom: 0.5,
-                        right: 0.5,
-                    },
-                }),
-            ],
-            listeners: {
-                move(event) {
-                    event.preventDefault();
-                    // regen root Matrix to account for window size changes
-                    rootMatrix = root.node().getScreenCTM();
-                    let x;
-                    let y;
-                    let translation = all_points[color].translation;
-                    translation = translation.map((point) => {
-                        if (
-                            point.id === d3.select(event.target).attr("data-id")
-                        ) {
-                            point.x += event.dx / rootMatrix.a;
-                            point.y += event.dy / rootMatrix.d;
-                            x = point.x;
-                            y = point.y;
-                        }
-                        return point;
-                    });
-                    all_points[color].translation = translation;
-                    update(color);
-                    d3.select(event.target).attr(
-                        "transform",
-                        `translate(${x}, ${y})`
-                    );
-                },
-            },
-        });
-    }
 }
 
 function setUpPuck() {
@@ -635,13 +595,13 @@ function setUpPuck() {
         .append("circle")
         .attr("cx", puck.original.x)
         .attr("cy", puck.original.y)
-        .attr("r", 1.5)
+        .attr("r", 1.25)
         .attr("class", "puck");
     interact(".puck").draggable({
         modifiers: [
             interact.modifiers.restrictRect({
-                restriction: d3.select("#background").node(),
-                elementRect: { left: 0.5, top: 0.5, bottom: 0.5, right: 0.5 },
+                restriction: d3.select("#possession-perimeter").node(),
+                elementRect: { left: 0.5, top: 0.5, bottom: 0.5, right: 0.8 },
                 // endOnly: true
             }),
         ],
@@ -688,12 +648,12 @@ export function setup() {
             .append("h3")
             .attr("class", color)
             .style("display", "inline-block")
-            .text(color === "blue" ? "Offensive" : "Defensive");
+            .text(color === "blue" ? "Powerplay" : "Penalty Kill");
 
         let select = widget
             .append("label")
             .attr("for", color + "-select")
-            .text("# Skaters:")
+            .text("# of Skaters:")
             .append("select")
             .attr("name", color + "-select")
             .attr("id", color + "-select");
@@ -710,7 +670,6 @@ export function setup() {
             let value = parseInt(d3.select(this).property("value"));
             // add 1 to accomodate goalie for orange
             value = color === "orange" ? value + 1 : value;
-            console.log(value);
             const points = color === "blue" ? bluePoints : orangePoints;
             all_points[color] = {
                 original: _.slice(points, 0, value),
@@ -726,7 +685,7 @@ export function setup() {
         widget
             .append("label")
             .attr("for", color + "-show-mst")
-            .text("Show MST")
+            .text("Show Player Connections")
             .append("input")
             .attr("type", "checkbox")
             .attr("id", color + "-show-mst")
@@ -745,7 +704,7 @@ export function setup() {
                 }
             });
 
-        widget.append("p").text("0 ft");
+        // widget.append("p").text("0 ft");
 
         setUpPointSet(_.slice(points, 0, color === "blue" ? 5 : 6), color);
     }
@@ -757,7 +716,7 @@ export function setup() {
     widget
         .append("label")
         .attr("for", "overall-show-mst")
-        .text("Show MST")
+        .text("Show Player Connections")
         .append("input")
         .attr("type", "checkbox")
         .attr("id", "overall-show-mst")
@@ -776,7 +735,7 @@ export function setup() {
             }
         });
 
-    widget.append("p").text("0 ft");
+    // widget.append("p").text("0 ft");
 
     update("blue");
 
@@ -784,7 +743,7 @@ export function setup() {
         .select("#custom-bar")
         .append("div")
         .attr("id", "probability-widget");
-    prob.append("h3").text("Probability");
+    prob.append("h3").attr("class","probability-header").text("High-Danger Unblocked Shot Probability");
     prob.append("p").text("0.00%").attr("class", "weight-100");
 
     updateProbability();

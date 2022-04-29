@@ -72,7 +72,7 @@ circle {
 
 .dot-text {
   fill: white;
-  font-size: 0.175rem;
+  font-size: 0.125rem;
   font-weight: bold;
 }
 
@@ -128,6 +128,10 @@ line {
     &.overall {
       text-decoration-color: $grey;
     }
+
+    &.probability-header {
+      font-size: 1.1rem;
+    }
   }
 
   select {
@@ -156,14 +160,13 @@ line {
     }
   }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .layout {
     display: block;
   }
-
-  .center {
-    display: block;
-  }
+  // .center {
+  //   display: block;
+  // }
 
   #ice-hockey-svg {
     width: 90vw;

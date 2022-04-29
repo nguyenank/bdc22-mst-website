@@ -50,7 +50,7 @@ circle.puck {
 
 .dot-text {
   fill: white;
-  font-size: 0.175rem;
+  font-size: 0.125rem;
   font-weight: bold;
 }
 
@@ -99,6 +99,9 @@ line.overall {
 }
 #custom-bar h3.overall {
   text-decoration-color: #969696;
+}
+#custom-bar h3.probability-header {
+  font-size: 1.1rem;
 }
 #custom-bar select {
   font-family: "Public Sans";
@@ -2522,12 +2525,8 @@ line.overall {
   font-weight: 900;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .layout {
-    display: block;
-  }
-
-  .center {
     display: block;
   }
 
