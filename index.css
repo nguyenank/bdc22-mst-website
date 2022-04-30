@@ -2,6 +2,14 @@ html {
   font-family: "Public Sans";
 }
 
+footer {
+  text-align: center;
+}
+
+.header {
+  text-align: center;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -52,6 +60,29 @@ circle.puck {
   fill: white;
   font-size: 0.125rem;
   font-weight: bold;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+#attack-arrow-svg {
+  fill: #35aba9;
+}
+
+.alert-danger {
+  color: #842029;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  border-bottom: 1px solid #f5c2c7;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+.alert-danger .alert-text {
+  font-size: 0.8rem;
+  text-align: center;
 }
 
 .layout {
@@ -80,7 +111,7 @@ line.overall {
   padding: 1rem;
   border: 2px black solid;
 }
-#custom-bar > * {
+#custom-bar > div {
   border-bottom: 1px black solid;
   padding: 0 1rem;
   margin-top: 1rem;
@@ -99,9 +130,6 @@ line.overall {
 }
 #custom-bar h3.overall {
   text-decoration-color: #969696;
-}
-#custom-bar h3.probability-header {
-  font-size: 0.7em;
 }
 #custom-bar select {
   font-family: "Public Sans";

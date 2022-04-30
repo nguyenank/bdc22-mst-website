@@ -216,6 +216,9 @@ function updateProbability() {
 }
 
 function calculateProbability() {
+    // whether config goes out-of-bounds of dataset
+    let oob = false;
+
     let prob = 0;
     const [o_edges, o_total_edge] = mst(shiftedPoints(all_points.blue));
     const [d_edges, d_total_edge] = mst(shiftedPoints(all_points.orange));
@@ -257,6 +260,12 @@ function calculateProbability() {
     }
 
     const ocr = opponent_connectedness_ratio(all_edges);
+
+    // check for out of bounds
+    if (dist_net > 50) {
+        oob = true;
+    }
+    d3.select(".alert-danger").style("display", oob ? "flex" : "none");
 
     for (const feature in COEFFICIENTS) {
         switch (feature) {
@@ -595,7 +604,7 @@ function setUpPuck() {
         .append("circle")
         .attr("cx", puck.original.x)
         .attr("cy", puck.original.y)
-        .attr("r", 1.25)
+        .attr("r", 1.5)
         .attr("class", "puck");
     interact(".puck").draggable({
         modifiers: [
@@ -739,15 +748,37 @@ export function setup() {
 
     update("blue");
 
+    let alert = d3
+        .select("#custom-bar")
+        .append("span")
+        .attr("class", "alert-danger")
+        .style("display", "none");
+
+    alert
+        .append("svg")
+        .attr("xmlns", "http://www.w3.org/2000/svg")
+        .attr("height", "1.25rem")
+        .attr("fill", "currentColor")
+        .attr("class", "bi bi-exclamation-triangle-fill")
+        .attr("viewBox", "0 0 16 16")
+        .append("path")
+        .attr(
+            "d",
+            "M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+        );
+
+    alert
+        .append("div")
+        .attr("class", "alert-text")
+        .text(
+            "This configuration is not contained within the limits of the dataset used to train the Highway model. The probability may be unexpected; take it with a grain of salt."
+        );
+
     const prob = d3
         .select("#custom-bar")
         .append("div")
         .attr("id", "probability-widget");
-    prob.append("h3")
-        .attr("class", "probability-header")
-        .text(
-            "Probability of a High-Danger Unblocked Shot within the Next Three Passes"
-        );
+    prob.append("h3").attr("class", "probability-header").text("Probability");
     prob.append("p").text("0.00%").attr("class", "weight-100");
 
     updateProbability();
