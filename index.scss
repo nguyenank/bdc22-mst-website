@@ -210,10 +210,14 @@ line {
     justify-content: flex-start;
     overflow-x: auto;
 
-    > * {
+    > div {
       border-bottom: 0;
       border-right: 1px black solid;
       margin-right: 1rem;
+    }
+
+    .alert-danger {
+      border-right: 1px solid #f5c2c7;
     }
   }
 }

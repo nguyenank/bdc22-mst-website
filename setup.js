@@ -48,19 +48,19 @@ const COEFFICIENTS = {
 // ORANGE = defense
 
 let bluePoints = [
-    { x: -20, y: 25, id: "PP1" },
-    { x: -20, y: -25, id: "PP2" },
-    { x: -20, y: 0, id: "PP3" },
-    { x: -50, y: 12.5, id: "PP4" },
-    { x: -50, y: -12.5, id: "PP5" },
-    { x: -35, y: 0, id: "PP6" },
+    { x: -30, y: 25, id: "PP1" },
+    { x: -30, y: -25, id: "PP2" },
+    { x: -30, y: 0, id: "PP3" },
+    { x: -45, y: 12.5, id: "PP4" },
+    { x: -45, y: -12.5, id: "PP5" },
+    { x: -30, y: 0, id: "PP6" },
 ];
 
 let orangePoints = [
     { x: -85, y: 0, id: "PKG" },
-    { x: -40, y: 25, id: "PK1" },
-    { x: -40, y: -25, id: "PK2" },
-    { x: -40, y: 0, id: "PK3" },
+    { x: -55, y: 25, id: "PK1" },
+    { x: -55, y: -25, id: "PK2" },
+    { x: -55, y: 0, id: "PK3" },
     { x: -70, y: 12.5, id: "PK4" },
     { x: -70, y: -12.5, id: "PK5" },
     { x: -55, y: 0, id: "PK6" },
@@ -239,6 +239,20 @@ function calculateProbability() {
         Math.pow(puckPosition.x - 11, 2) + Math.pow(puckPosition.y - 42.5, 2)
     );
 
+    function angle(x, y) {
+        if (x >= 11) {
+            const xdiff = x - 11;
+            const ydiff = y - 42.5;
+            return 180 - (Math.atan2(xdiff, ydiff) * 180) / Math.PI;
+        } else {
+            const xdiff = 11 - x;
+            const ydiff = y - 42.5;
+            return -180 + (Math.atan2(xdiff, ydiff) * 180) / Math.PI;
+        }
+    }
+
+    const angle_to_attacking_net = angle(puckPosition.x, puckPosition.y);
+
     const o_avg_edge = o_total_edge / o_edges.length;
     const d_avg_edge = d_total_edge / d_edges.length;
     const full_avg_edge = all_total_edge / all_edges.length;
@@ -262,9 +276,26 @@ function calculateProbability() {
     const ocr = opponent_connectedness_ratio(all_edges);
 
     // check for out of bounds
-    if (dist_net > 50) {
-        oob = true;
+    function out_of_bounds(minimum, maximum, variable) {
+        return variable < minimum || variable > maximum;
     }
+
+    const oob_checks = [
+        out_of_bounds(6.800735254, 96.9703563, dist_net),
+        out_of_bounds(4.935694122, 27.88383144, full_avg_edge),
+        out_of_bounds(29.61416473, 167.3029887, all_total_edge),
+        out_of_bounds(4.501513775, 44.08701061, o_avg_edge),
+        out_of_bounds(4.501513775, 144.1423372, o_total_edge),
+        out_of_bounds(1, 1.666666667, o_avg_edges_per_player),
+        out_of_bounds(5.403451211, 40.67138455, d_avg_edge),
+        out_of_bounds(17.05970846, 103.5577001, d_total_edge),
+        out_of_bounds(0.32849809, 4.409040516, od_mst_ratio),
+        out_of_bounds(0.111111111, 1, ocr),
+        out_of_bounds(2.0095538, 358.3397176, angle_to_attacking_net),
+    ];
+
+    oob = _.some(oob_checks, Boolean);
+
     d3.select(".alert-danger").style("display", oob ? "flex" : "none");
 
     for (const feature in COEFFICIENTS) {
@@ -720,7 +751,7 @@ export function setup() {
     setUpPuck();
 
     let widget = d3.select("#custom-bar").append("div").attr("id", "overall");
-    widget.append("h3").attr("class", "overall").text("Overall");
+    widget.append("h3").attr("class", "overall").text("All Skaters");
 
     widget
         .append("label")
