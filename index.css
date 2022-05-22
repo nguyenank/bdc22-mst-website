@@ -118,7 +118,10 @@ line.overall {
 }
 #custom-bar h3 {
   text-transform: capitalize;
-  text-decoration: underline black solid 0.2rem;
+  text-decoration-line: underline;
+  text-decoration-color: black;
+  text-decoration-style: solid;
+  text-decoration-thickness: 0.2rem;
   margin-top: 0;
   margin-bottom: 0.2rem;
 }
@@ -134,6 +137,7 @@ line.overall {
 #custom-bar select {
   font-family: "Public Sans";
   margin-left: 0.5rem;
+  font-size: 1rem;
 }
 #custom-bar label {
   font-weight: 600;

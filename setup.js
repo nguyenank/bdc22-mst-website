@@ -239,7 +239,6 @@ function update(color) {
 
 function updateProbability() {
     const prob = calculateProbability();
-    console.log(prob);
     d3.select("#probability-widget")
         .select("p")
         .text((prob * 100).toFixed(2) + "%")
@@ -797,7 +796,7 @@ export function setup() {
             .append("h3")
             .attr("class", color)
             .style("display", "inline-block")
-            .text(color === "blue" ? "Powerplay" : "Penalty Kill");
+            .text(color === "blue" ? "Power Play" : "Penalty Kill");
 
         let select = widget
             .append("label")
@@ -918,7 +917,7 @@ export function setup() {
         .select("#custom-bar")
         .append("div")
         .attr("id", "probability-widget");
-    prob.append("h3").attr("class", "probability-header").text("Probability");
+    prob.append("h3").attr("class", "probability-header").text("Dangerous Situation Probability");
     prob.append("p").text("0.00%").attr("class", "weight-100");
 
     updateProbability();
