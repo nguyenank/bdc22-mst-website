@@ -1,4 +1,4 @@
-# bdc22-mst-website
+# Highway to the Danger Zone - Webtool
 
 An interactive webtool, [available here](https://highway-to-the-danger-zone.netlify.app/), utilizing the Highway model created by Carlie Markey, Nayan Patel, An Nguyen, and Ben Howell.
 
