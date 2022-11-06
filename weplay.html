@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/svg+xml" href="/resources/favicon.svg" />
+        <link rel="mask-icon" href="/resources/favicon.svg" color="red" />
+
+        <title>WEPlay</title>
+
+        <!-- Google fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Public+Sans:100,200,300,400,500,600,700,800,900"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <!-- Interact JS -->
+        <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+        <!-- D3.js -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.6.0/d3.min.js"
+            integrity="sha512-XgjkLS0sSzUq88GniFcrLy6zjgVWkBoRFziaLm1Z+gVgkHuO3ieikhD/Q6eNKXAsp88yvBFS0n6ovVlabXftIg=="
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- lodash -->
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+
+        <!-- plausible.io -->
+        <!-- <script defer data-domain="highway-to-the-danger-zone.netlify.app" src="https://plausible.io/js/plausible.js"></script> -->
+
+        <!-- custom stylesheet -->
+        <link rel="stylesheet" href="index.css" />
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>WE Play</h1>
+            <div class="medium-text">Little blurb goes here.</div>
+        </div>
+        <hr />
+        <div class="layout">
+            <div class="main-area">
+                <div class="medium-text" id="custom-bar"></div>
+            </div>
+            <div class="main-area">
+                <div class="center">
+                    <svg
+                        id="attack-arrow-svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="100%"
+                        viewBox="0 0 202 10"
+                    >
+                        <path
+                            d="
+        M 70 5
+        L 80 0
+        L 80 2.5
+        L 130 2.5
+        L 130 7.5
+        L 80 7.5
+        L 80 10
+        Z"
+                        />
+                        <text class="dot-text" x="100" y="5">POWER PLAY</text>
+                    </svg>
+                </div>
+                <div class="center">
+                    <svg
+                        id="ice-hockey-svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="100%"
+                        viewBox=" -1 -1 102 87"
+                    >
+                        <g id="transformations">
+                            <clipPath id="clipBorder">
+                                <path
+                                    d="M 0 28
+              A 28 28 0 0 1 28 0
+              L 100 0
+              L 100 85
+              L 29 85
+              A 28 28 0 0 1 0 57
+            L 0 28"
+                                />
+                            </clipPath>
+                            <path
+                                id="background"
+                                d="M 0 28
+            A 28 28 0 0 1 28 0
+            L 100 0
+            L 100 85
+            L 29 85
+            A 28 28 0 0 1 0 57
+        L 0 28"
+                                fill="white"
+                            />
+                            <path
+                                id="center-line"
+                                d="M 100 0
+            L 100 41.68
+            M 100 43.32
+          L 100 85"
+                                stroke="#C8102e"
+                                stroke-width="0.984"
+                            />
+                            <g id="center-circles">
+                                <path
+                                    d="M 100.5 27.5 A 15 15 1 0 0 100.5 57.5"
+                                    stroke="#0033A0"
+                                    stroke-width="0.1666667"
+                                    fill="transparent"
+                                />
+                                <circle
+                                    id="middle-center-circle"
+                                    cx="100"
+                                    cy="42.5"
+                                    r=".5"
+                                    fill="#0033A0"
+                                />
+                            </g>
+                            <g id="left-side">
+                                <path
+                                    id="left-goal-line"
+                                    d="M 13 5
+            L 13 81"
+                                    stroke="#C8102e"
+                                    stroke-width="0.164"
+                                />
+                                <g id="left-goalie-crease">
+                                    <path
+                                        d="
+                  M 0 56.6
+                  L 13 53.65
+                  M 0 28.4
+                  L 13 31.35"
+                                        stroke="#C8102e"
+                                        stroke-width="0.1667"
+                                    />
+                                    <path
+                                        id="left-goal-crease"
+                                        d="
+                  M 13 38.5
+                  L 17.5 38.5
+                  A 6 6 0 0 1 17.5 46.5
+                  L 13 46.5
+                  M 17 38.5
+                  L 17 38.9166667
+                  M 17 46.5
+                  L 17 46.08333333"
+                                        stroke="#C8102e"
+                                        fill="#E6F9FF"
+                                        stroke-width="0.164"
+                                    />
+                                    <path
+                                        id="left-goal"
+                                        d="
+                  M 13 39.5
+                  L 11 39.5
+                  A 5 5 0 0 0 11 45.5
+                  L 13 45.5"
+                                        stroke="black"
+                                        fill="transparent"
+                                        stroke-width="0.164"
+                                    />
+                                </g>
+                                <path
+                                    id="left-blue-line"
+                                    d="M 75 0
+          L 75 85"
+                                    stroke="#0033A0"
+                                    stroke-width="1"
+                                />
+                                <clipPath id="top-left-spot-clip">
+                                    <circle
+                                        id="top-left-spot"
+                                        cx="80"
+                                        cy="20.5"
+                                        r="1"
+                                        stroke="#C8102e"
+                                        stroke-width="0.1667"
+                                        fill="transparent"
+                                    />
+                                </clipPath>
+                                <circle
+                                    id="top-left-spot"
+                                    cx="80"
+                                    cy="20.5"
+                                    r="1"
+                                    stroke="#C8102e"
+                                    stroke-width="0.1667"
+                                    fill="transparent"
+                                />
+                                <rect
+                                    x="79.25"
+                                    y="19.5"
+                                    width="1.5"
+                                    height="2"
+                                    fill="#C8102e"
+                                    clip-path="url(#top-left-spot-clip)"
+                                />
+                                <clipPath id="bottom-left-spot-clip">
+                                    <circle
+                                        id="bottom-left-spot"
+                                        cx="80"
+                                        cy="64.5"
+                                        r="1"
+                                        stroke="#C8102e"
+                                        stroke-width="0.1667"
+                                        fill="transparent"
+                                    />
+                                </clipPath>
+                                <circle
+                                    id="bottom-left-spot"
+                                    cx="80"
+                                    cy="64.5"
+                                    r="1"
+                                    stroke="#C8102e"
+                                    stroke-width="0.1667"
+                                    fill="transparent"
+                                />
+                                <rect
+                                    x="79.25"
+                                    y="63.5"
+                                    width="1.5"
+                                    height="2"
+                                    fill="#C8102e"
+                                    clip-path="url(#bottom-left-spot-clip)"
+                                />
+                                <g id="bottom-left-faceoff-circle">
+                                    <clipPath id="tr-center-circle-clip">
+                                        <circle
+                                            id="center-circle"
+                                            cx="31"
+                                            cy="64.5"
+                                            r="1"
+                                            stroke="#C8102e"
+                                            stroke-width="0.1667"
+                                            fill="transparent"
+                                        />
+                                    </clipPath>
+                                    <circle
+                                        id="center-circle"
+                                        cx="31"
+                                        cy="64.5"
+                                        r="1"
+                                        stroke="#C8102e"
+                                        stroke-width="0.1667"
+                                        fill="transparent"
+                                    />
+                                    <rect
+                                        x="30.25"
+                                        y="63.57"
+                                        width="1.5"
+                                        height="1.85"
+                                        fill="#C8102e"
+                                        clip-path="url(#tr-center-circle-clip)"
+                                    />
+                                    <circle
+                                        id="center-circle"
+                                        cx="31"
+                                        cy="64.5"
+                                        r="15"
+                                        stroke="#C8102e"
+                                        fill="transparent"
+                                        stroke-width=".16667"
+                                    />
+                                    <path
+                                        d="
+            M 28.125 49.75
+            L 28.125 47.75
+            M 33.875 49.75
+            L 33.875 47.75
+            M 28.125 79.25
+            L 28.125 81.25
+            M 33.875 79.25
+            L 33.875 81.25
+            "
+                                        stroke="#C8102e"
+                                        fill="transparent"
+                                        stroke-width=".16667"
+                                    />
+                                    <path
+                                        d="M 25 65.3333333
+               L 28.9166667 65.3333333
+               L 28.9166667 68.25
+               M 28.9166667 60.75
+               L 28.9166667 63.6666667
+               L 25 63.6666667
+               M 37 65.3333333
+               L 33.08333333 65.3333333
+               L 33.08333333 68.25
+               M 33.08333333 60.75
+               L 33.08333333 63.6666667
+               L 37 63.6666667
+               "
+                                        stroke="#C8102e"
+                                        fill="transparent"
+                                        stroke-width=".16667"
+                                    />
+                                </g>
+                                <g id="top-left-faceoff-circle">
+                                    <clipPath id="tl-center-circle-clip">
+                                        <circle
+                                            id="center-circle"
+                                            cx="31"
+                                            cy="20.5"
+                                            r="1"
+                                            stroke="#C8102e"
+                                            stroke-width="0.1667"
+                                            fill="transparent"
+                                        />
+                                    </clipPath>
+                                    <circle
+                                        id="center-circle"
+                                        cx="31"
+                                        cy="20.5"
+                                        r="1"
+                                        stroke="#C8102e"
+                                        stroke-width="0.1667"
+                                        fill="transparent"
+                                    />
+                                    <rect
+                                        x="30.25"
+                                        y="19.57"
+                                        width="1.5"
+                                        height="1.85"
+                                        fill="#C8102e"
+                                        clip-path="url(#tl-center-circle-clip)"
+                                    />
+                                    <circle
+                                        id="center-circle"
+                                        cx="31"
+                                        cy="20.5"
+                                        r="15"
+                                        stroke="#C8102e"
+                                        fill="transparent"
+                                        stroke-width=".16667"
+                                    />
+                                    <path
+                                        d="
+            M 28.125 5.75
+            L 28.125 3.75
+            M 33.875 5.75
+            L 33.875 3.75
+            M 28.125 35.25
+            L 28.125 37.25
+            M 33.875 35.25
+            L 33.875 37.25
+            "
+                                        stroke="#C8102e"
+                                        fill="transparent"
+                                        stroke-width=".16667"
+                                    />
+                                    <path
+                                        d="M 25 21.3333333
+               L 28.9166667 21.3333333
+               L 28.9166667 24.25
+               M 28.9166667 16.75
+               L 28.9166667 19.6666667
+               L 25 19.6666667
+               M 37 21.3333333
+               L 33.08333333 21.3333333
+               L 33.08333333 24.25
+               M 33.08333333 16.75
+               L 33.08333333 19.6666667
+               L 37 19.6666667
+               "
+                                        stroke="#C8102e"
+                                        fill="transparent"
+                                        stroke-width=".16667"
+                                    />
+                                </g>
+                            </g>
+                            <path
+                                id="scorekeeper"
+                                d="M 90 85 A 10 10 0 0 1 100.5 75"
+                                stroke-width="0.16667"
+                                fill="transparent"
+                                stroke="black"
+                            />
+                            <path
+                                id="outside-perimeter"
+                                d="M 0 28
+        A 28 28 0 0 1 28 0
+        L 101 0
+        M 101 85
+        L 29 85
+        A 28 28 0 0 1 0 57
+        L 0 28"
+                                stroke="black"
+                                fill="transparent"
+                                stroke-width="1"
+                            />
+                            <path
+                                id="possession-perimeter"
+                                d="M 0 28
+        A 28 28 0 0 1 28 0
+        L 100 0
+        L 100 85
+        L 29 85
+        A 28 28 0 0 1 0 57
+        L 0 28"
+                                stroke="transparent"
+                                fill="transparent"
+                            />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <script type="module" src="/weplay.js"></script>
+        <script type="module">
+            import { setup } from "/weplay.js";
+            setup();
+        </script>
+    </body>
+    <hr />
+    <footer>
+        Created for SEAHAC 2022. Put all of our names here at some point.
+        <br />
+        Put all the relevant links here at some point.
+    </footer>
+</html>

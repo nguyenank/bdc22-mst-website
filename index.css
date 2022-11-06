@@ -33,17 +33,29 @@ h1 {
 }
 
 circle.blue {
-  fill: #35aba9;
+  fill: rgb(53, 171, 169);
 }
 circle.orange {
-  fill: #ea8e48;
+  fill: rgb(234, 142, 72);
 }
 circle.puck {
   fill: black;
 }
 
+.stick {
+  stroke-width: 0.3;
+  stroke: #444;
+  fill: transparent;
+}
+
+.stick-head {
+  stroke-width: 0.5;
+  stroke: #ccc;
+  fill: transparent;
+}
+
 .helmet {
-  fill: #ea8e48;
+  fill: rgb(234, 142, 72);
 }
 
 .helmet-grating {
@@ -65,7 +77,7 @@ circle.puck {
 }
 
 #attack-arrow-svg {
-  fill: #35aba9;
+  fill: rgb(53, 171, 169);
 }
 
 .alert-danger {
@@ -126,13 +138,13 @@ line.overall {
   margin-bottom: 0.2rem;
 }
 #custom-bar h3.blue {
-  text-decoration-color: #35aba9;
+  text-decoration-color: rgb(53, 171, 169);
 }
 #custom-bar h3.orange {
-  text-decoration-color: #ea8e48;
+  text-decoration-color: rgb(234, 142, 72);
 }
 #custom-bar h3.overall {
-  text-decoration-color: #969696;
+  text-decoration-color: rgb(150, 150, 150);
 }
 #custom-bar select {
   font-family: "Public Sans";
@@ -2561,12 +2573,10 @@ line.overall {
   .layout {
     display: block;
   }
-
   #ice-hockey-svg {
     width: 90vw;
     touch-action: none;
   }
-
   #custom-bar {
     flex-direction: row;
     justify-content: flex-start;
@@ -2580,6 +2590,57 @@ line.overall {
   #custom-bar .alert-danger {
     border-right: 1px solid #f5c2c7;
   }
+}
+/* CSS */
+button {
+  appearance: button;
+  background-color: rgb(150, 150, 150);
+  border: solid transparent;
+  border-radius: 5px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  outline: none;
+  overflow: visible;
+  padding: 0.5rem;
+  text-align: center;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+}
+
+button:after {
+  background-clip: padding-box;
+  background-color: #ccc;
+  border: solid transparent;
+  border-radius: 5px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+button.selected:after {
+  background-color: rgb(150, 150, 150);
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
 }
 
 /*# sourceMappingURL=index.css.map */
