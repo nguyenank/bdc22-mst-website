@@ -111,6 +111,7 @@ function setUpPointSet(points, color) {
                 let cy = d.y;
                 d3.select(this)
                     .text("")
+                    .attr("class", "goalie-dot")
                     .append("path")
                     .attr(
                         "d",
@@ -246,6 +247,49 @@ function setUpPointSet(points, color) {
             }
         }
     });
+
+    if (color == "orange") {
+        interact(".goalie-dot").draggable({
+            modifiers: [
+                interact.modifiers.restrictRect({
+                    restriction: d3.select("#goalie-bubble").node(),
+                    elementRect: {
+                        left: 0.5,
+                        top: 0.5,
+                        bottom: 0.5,
+                        right: 0.6
+                    }
+                    // endOnly: true
+                })
+            ],
+            listeners: {
+                move(event) {
+                    event.preventDefault();
+                    // regen root Matrix to account for window size changes
+                    rootMatrix = root.node().getScreenCTM();
+                    let x;
+                    let y;
+                    let translation = all_points[color].translation;
+                    translation = translation.map((point) => {
+                        if (
+                            point.id === d3.select(event.target).attr("data-id")
+                        ) {
+                            point.x += event.dx / rootMatrix.a;
+                            point.y += event.dy / rootMatrix.d;
+                            x = point.x;
+                            y = point.y;
+                        }
+                        return point;
+                    });
+                    all_points[color].translation = translation;
+                    d3.select(event.target).attr(
+                        "transform",
+                        `translate(${x}, ${y})`
+                    );
+                }
+            }
+        });
+    }
 }
 
 function setUpButtons() {
