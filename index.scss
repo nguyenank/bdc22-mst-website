@@ -83,7 +83,14 @@ circle {
     font-size: 0.125rem;
     font-weight: bold;
     text-anchor: middle;
-    dominant-baseline: middle;
+    dominant-baseline: central;
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+}
+
+.dot-text.large {
+    font-size: 0.175rem;
 }
 
 #attack-arrow-svg {
@@ -145,7 +152,7 @@ line {
     }
 
     h3 {
-        text-transform: capitalize;
+        // text-transform: capitalize;
         text-decoration-line: underline;
         text-decoration-color: black;
         text-decoration-style: solid;

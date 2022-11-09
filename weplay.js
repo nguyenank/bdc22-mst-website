@@ -5,22 +5,22 @@ let rootMatrix;
 // ORANGE = defense
 
 let bluePoints = [
-    { x: -40, y: 17.5, id: "PP1" },
-    { x: -40, y: -17.5, id: "PP2" },
-    { x: -40, y: 0, id: "PP3" },
-    { x: -75, y: 12.5, id: "PP4" },
-    { x: -75, y: -12.5, id: "PP5" },
-    { x: -30, y: 0, id: "PP6" }
+    { x: -40, y: 17.5, id: "O1" },
+    { x: -40, y: -17.5, id: "O2" },
+    { x: -40, y: 0, id: "O3" },
+    { x: -75, y: 12.5, id: "O4" },
+    { x: -75, y: -12.5, id: "O5" },
+    { x: -30, y: 0, id: "O6" }
 ];
 
 let orangePoints = [
-    { x: -85, y: 0, id: "PKG" },
-    { x: -55, y: 10, id: "PK1" },
-    { x: -55, y: -10, id: "PK2" },
-    { x: -55, y: 0, id: "PK3" },
-    { x: -70, y: 5.5, id: "PK4" },
-    { x: -70, y: -5.5, id: "PK5" },
-    { x: -55, y: 0, id: "PK6" }
+    { x: -85, y: 0, id: "DG" },
+    { x: -55, y: 10, id: "D1" },
+    { x: -55, y: -10, id: "D2" },
+    { x: -55, y: 0, id: "D3" },
+    { x: -70, y: 5.5, id: "D4" },
+    { x: -70, y: -5.5, id: "D5" },
+    { x: -55, y: 0, id: "D6" }
 ];
 
 let metric;
@@ -64,8 +64,45 @@ function update(color) {
 
     const full_shifted = _.filter(
         _.flatMap(all_points, (points) => shiftedPoints(points)),
-        (o) => o.id !== "PKG"
+        (o) => o.id !== "DG"
     );
+}
+
+function changePuckCarrier(dataId) {
+    d3.select("#puck-stick").remove();
+    const dot = d3
+        .select("#ice-hockey-svg")
+        .select("#blue")
+        .select("#dots")
+        .select(`g[data-id="${dataId}"]`);
+
+    const puckstick = dot.append("g").attr("id", "puck-stick");
+    const x = parseFloat(dot.select("circle").attr("cx"));
+    const y = parseFloat(dot.select("circle").attr("cy"));
+    puckstick
+        .append("path")
+        .attr("d", `M ${x - 3} ${y} L ${x - 4.1} ${y + 3.1}`)
+        .attr("class", "stick");
+    puckstick
+        .append("path")
+        .attr("d", `M ${x - 4} ${y + 3} L ${x - 5.5} ${y + 2.85} `)
+        .attr("class", "stick-head");
+    puckstick
+        .append("circle")
+        .attr("cx", x - 4.5)
+        .attr("cy", y + 2)
+        .attr("r", 0.5)
+        .attr("class", "puck");
+}
+
+function getPuckCarrier() {
+    // https://stackoverflow.com/a/43769625
+    return d3
+        .select("#puck-stick")
+        .select(function () {
+            return this.parentNode;
+        })
+        .attr("data-id");
 }
 
 function setUpPointSet(points, color) {
@@ -80,8 +117,6 @@ function setUpPointSet(points, color) {
         .attr("clip-path", "url(#clipBorder)")
         .select("#" + color);
 
-    colorG.append("g").attr("id", "mst");
-
     let dots = colorG
         .append("g")
         .attr("id", "dots")
@@ -90,6 +125,11 @@ function setUpPointSet(points, color) {
         .join("g")
         .attr("class", color + "-dot")
         .attr("data-id", (d) => d.id)
+        .on("dblclick", function () {
+            if (color == "blue") {
+                changePuckCarrier(d3.select(this).attr("data-id"));
+            }
+        })
         .each(function (d) {
             d3.select(this)
                 .append("circle")
@@ -103,10 +143,10 @@ function setUpPointSet(points, color) {
                 .attr("y", d.y)
                 .attr("text-anchor", "middle")
                 .attr("dominant-baseline", "middle")
-                .attr("class", "dot-text")
+                .attr("class", "dot-text large")
                 .text(d.id);
 
-            if (d.id === "PKG") {
+            if (d.id === "DG") {
                 let cx = d.x;
                 let cy = d.y;
                 d3.select(this)
@@ -189,29 +229,6 @@ function setUpPointSet(points, color) {
                     .attr("transform", `translate(${cx},${cy}) scale(0.8)`)
                     .attr("class", "helmet-grating");
             }
-
-            if (d.id === "PP1") {
-                d3.select(this)
-                    .append("path")
-                    .attr(
-                        "d",
-                        `M ${d.x - 3} ${d.y} L ${d.x - 4.1} ${d.y + 3.1}`
-                    )
-                    .attr("class", "stick");
-                d3.select(this)
-                    .append("path")
-                    .attr(
-                        "d",
-                        `M ${d.x - 4} ${d.y + 3} L ${d.x - 5.5} ${d.y + 2.85} `
-                    )
-                    .attr("class", "stick-head");
-                d3.select(this)
-                    .append("circle")
-                    .attr("cx", d.x - 4.5)
-                    .attr("cy", d.y + 2)
-                    .attr("r", 0.5)
-                    .attr("class", "puck");
-            }
         });
 
     interact("." + color + "-dot").draggable({
@@ -290,6 +307,8 @@ function setUpPointSet(points, color) {
             }
         });
     }
+
+    changePuckCarrier("O1");
 }
 
 function setUpButtons() {
@@ -339,7 +358,7 @@ export function setup() {
             .append("h3")
             .attr("class", color)
             .style("display", "inline-block")
-            .text(color === "blue" ? "Power Play" : "Penalty Kill");
+            .text(color === "blue" ? "Offen(s/c)e" : "Defen(s/c)e");
 
         let select = widget
             .append("label")
