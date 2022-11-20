@@ -22,7 +22,7 @@
   -ms-transform: translate(-50%, -50%);
 }
 
-#overall {
+#overlay {
   filter: blur(1.4px);
   opacity: 0.85;
 }

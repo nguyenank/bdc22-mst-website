@@ -393,10 +393,10 @@ function plot_metric(grid, domains) {
         .scaleSequential()
         .domain(domains[METRIC])
         .interpolator(d3.interpolateRdBu);
-    d3.select("#transformations").select("#overall").selectAll("*").remove();
+    d3.select("#transformations").select("#overlay").selectAll("*").remove();
 
     d3.select("#transformations")
-        .select("#overall")
+        .select("#overlay")
         .selectAll("circle")
         .data(grid)
         .enter()
@@ -412,7 +412,7 @@ function setup() {
         .select("#transformations")
         .attr("clip-path", "url(#clipBorder)")
         .append("g")
-        .attr("id", "overall")
+        .attr("id", "overlay")
         .append("g")
         .attr("id", "mst");
     for (const color in all_points) {
@@ -465,6 +465,8 @@ function setup() {
         setUpPointSet(_.slice(points, 0, color === "blue" ? 5 : 6), color);
     }
     setUpButtons();
+
+    run_model();
 }
 
 setup();
