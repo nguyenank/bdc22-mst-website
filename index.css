@@ -1,3 +1,8 @@
+body.loading {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
 #overlayCSS {
   position: fixed; /* Sit on top of the page content */
   display: block; /* Hidden by default */
@@ -9,7 +14,6 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.9); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-  overflow: hidden;
   cursor: pointer; /* Add a pointer on hover */
 }
 #overlayCSS #text {

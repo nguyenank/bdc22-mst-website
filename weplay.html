@@ -36,7 +36,7 @@
         <link rel="stylesheet" href="index.css" />
     </head>
 
-    <body>
+    <body class="loading">
         <div id="overlayCSS">
             <div id="text">Loading ...</div>
         </div>
@@ -439,6 +439,7 @@
                 // console.log(testPy([1, 4, 6, 7]).toJs());
                 // testPy.destroy();
                 d3.select("#overlayCSS").style("display", "none");
+                d3.select("body").classed("loading", false);
                 run_model();
             });
         </script>
