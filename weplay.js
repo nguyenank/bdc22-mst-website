@@ -465,8 +465,6 @@ function setup() {
         setUpPointSet(_.slice(points, 0, color === "blue" ? 5 : 6), color);
     }
     setUpButtons();
-
-    run_model();
 }
 
 setup();

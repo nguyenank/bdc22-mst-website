@@ -9,7 +9,7 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.9); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-  overflow-y: hidden;
+  overflow: hidden;
   cursor: pointer; /* Add a pointer on hover */
 }
 #overlayCSS #text {

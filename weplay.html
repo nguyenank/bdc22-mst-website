@@ -435,10 +435,11 @@
                 );
             }
             main().finally(() => {
-                testPy = pyodide.globals.get("test");
-                console.log(testPy([1, 4, 6, 7]).toJs());
-                testPy.destroy();
+                // testPy = pyodide.globals.get("test");
+                // console.log(testPy([1, 4, 6, 7]).toJs());
+                // testPy.destroy();
                 d3.select("#overlayCSS").style("display", "none");
+                run_model();
             });
         </script>
         <script src="/weplay.js"></script>
