@@ -30,11 +30,16 @@
         <!-- plausible.io -->
         <!-- <script defer data-domain="highway-to-the-danger-zone.netlify.app" src="https://plausible.io/js/plausible.js"></script> -->
 
+        <!-- pyodide -->
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
         <!-- custom stylesheet -->
         <link rel="stylesheet" href="index.css" />
     </head>
 
     <body>
+        <div id="overlayCSS">
+            <div id="text">Loading ...</div>
+        </div>
         <div class="header">
             <h1>WePlay</h1>
             <div class="medium-text">Little blurb goes here.</div>
@@ -410,11 +415,33 @@
                 </div>
             </div>
         </div>
-        <script type="module" src="/weplay.js"></script>
-        <script type="module">
-            import { setup } from "/weplay.js";
-            setup();
+        <script type="text/javascript">
+            let pyodide;
+            async function main() {
+                pyodide = await loadPyodide();
+                console.log(
+                    pyodide.runPython(`
+                  import sys
+                  sys.version
+              `)
+                );
+                await pyodide.loadPackage(["numpy", "scipy"]);
+                pyodide.runPython(
+                    await (
+                        await fetch(
+                            "http://localhost:8000/hockey_pipeline_test.py"
+                        )
+                    ).text()
+                );
+            }
+            main().finally(() => {
+                testPy = pyodide.globals.get("test");
+                console.log(testPy([1, 4, 6, 7]).toJs());
+                testPy.destroy();
+                d3.select("#overlayCSS").style("display", "none");
+            });
         </script>
+        <script src="/weplay.js"></script>
     </body>
     <hr />
     <footer>

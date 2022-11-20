@@ -125,11 +125,20 @@ function setUpPointSet(points, color) {
         .join("g")
         .attr("class", color + "-dot")
         .attr("data-id", (d) => d.id)
-        .on("dblclick", function () {
-            if (color == "blue") {
+        .on("mouseup", function (e) {
+            if (e.shiftKey && color == "blue") {
                 changePuckCarrier(d3.select(this).attr("data-id"));
             }
+            run_model();
         })
+        .on("touchend", function (e) {
+            run_model();
+        })
+        // .on("dblclick", function () {
+        //     if (color == "blue") {
+        //         changePuckCarrier(d3.select(this).attr("data-id"));
+        //     }
+        // })
         .each(function (d) {
             d3.select(this)
                 .append("circle")
@@ -313,9 +322,9 @@ function setUpPointSet(points, color) {
 
 function setUpButtons() {
     const buttons = [
-        { id: "metric1", label: "Metric 1" },
-        { id: "metric2", label: "Metric 2" },
-        { id: "metric3", label: "Metric 3" }
+        { id: "metric1", label: "Successful Pass Probability" },
+        { id: "metric2", label: "Best Case Pass Value" },
+        { id: "metric3", label: "Expected Pass Value" }
     ];
 
     d3.select("#custom-bar")
@@ -327,6 +336,7 @@ function setUpButtons() {
         .append("button")
         .text((d) => d.label)
         .attr("id", (d) => d.id)
+        .attr("class", (d) => (d.id == "metric1" ? "selected" : undefined))
         .on("click", function () {
             metric = d3.select(this).attr("id");
             d3.select("#buttons")
@@ -334,10 +344,70 @@ function setUpButtons() {
                 .classed("selected", function (d, i) {
                     return metric == d3.select(this).attr("id");
                 });
+            run_model();
         });
 }
 
-export function setup() {
+function run_model() {
+    // x_js = [
+    //     28.5738, 44.3415, 46.2854, 49.4131, 43.6537, 20.1617, 19.1869,
+    //     13.3854, 20.0018
+    // ];
+    // y_js = [
+    //     49.31514, 48.25991, 70.17542, 13.65429, 28.5197, 38.44596,
+    //     36.80571, 38.32781, 22.03946
+    // ];
+    // vx_js = [
+    //     6.725073, 4.964445, -3.097599, 14.252625, 4.286796, 1.925091,
+    //     -2.295729, -0.294258, 6.464229
+    // ];
+    // vy_js = [
+    //     -7.1037417, -7.967796, -6.4446342, 6.5618985, -10.9455216,
+    //     -4.7444208, -4.1465373, -0.3377985, -5.4265284
+    // ];
+    // goalie_js = 7;
+    // puck_js = 3;
+    // off_js = [-1, -1, 1, 1, -1, 1, -1, -1, 1];
+    overall = [
+        ...shiftedPoints(all_points["blue"]),
+        ...shiftedPoints(all_points["orange"])
+    ];
+    ids = _.map(overall, "id");
+    x_js = _.map(overall, "x");
+    y_js = _.map(overall, "y");
+    vx_js = _.map(overall, () => 0.01);
+    vy_js = _.map(overall, () => 0.01);
+    goalie_js = _.findIndex(ids, (id) => id == "DG");
+    puck_js = _.findIndex(ids, (id) => id == getPuckCarrier());
+    off_js = _.map(ids, (id) => (id.slice(0, 1) == "O" ? 1 : -1));
+
+    tracks = pyodide.globals.get("tracks");
+    results = tracks(x_js, y_js, vx_js, vy_js, goalie_js, puck_js, off_js);
+    plot_metric(results.grid.toJs(), results.domains.toJs());
+    results.destroy();
+}
+
+function plot_metric(grid, domains) {
+    const METRIC = parseInt(d3.select(".selected").attr("id").slice(-1)) + 3;
+    const colorPalette = d3
+        .scaleSequential()
+        .domain(domains[METRIC])
+        .interpolator(d3.interpolateRdBu);
+    d3.select("#transformations").select("#overall").selectAll("*").remove();
+
+    d3.select("#transformations")
+        .select("#overall")
+        .selectAll("circle")
+        .data(grid)
+        .enter()
+        .append("circle")
+        .attr("r", "1")
+        .attr("cx", (d) => d[0])
+        .attr("cy", (d) => d[1])
+        .attr("fill", (d) => colorPalette(d[METRIC]));
+}
+
+function setup() {
     let overallG = d3
         .select("#transformations")
         .attr("clip-path", "url(#clipBorder)")
@@ -396,3 +466,5 @@ export function setup() {
     }
     setUpButtons();
 }
+
+setup();
