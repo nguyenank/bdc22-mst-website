@@ -31,6 +31,16 @@ body.loading {
   opacity: 0.85;
 }
 
+.legend-slice {
+  width: 0.5em;
+  height: 1em;
+  display: inline-block;
+}
+
+.legend-text {
+  font-size: 1.3rem;
+}
+
 html {
   font-family: "Public Sans";
 }

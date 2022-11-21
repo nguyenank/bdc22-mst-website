@@ -322,6 +322,7 @@ function setUpPointSet(points, color) {
 
 function setUpButtons() {
     const buttons = [
+        { id: "metric0", label: "Rink Control" },
         { id: "metric1", label: "Successful Pass Probability" },
         { id: "metric2", label: "Best Case Pass Value" },
         { id: "metric3", label: "Expected Pass Value" }
@@ -336,7 +337,7 @@ function setUpButtons() {
         .append("button")
         .text((d) => d.label)
         .attr("id", (d) => d.id)
-        .attr("class", (d) => (d.id == "metric1" ? "selected" : undefined))
+        .attr("class", (d) => (d.id == "metric0" ? "selected" : undefined))
         .on("click", function () {
             metric = d3.select(this).attr("id");
             d3.select("#buttons")
@@ -389,6 +390,11 @@ function run_model() {
 
 function plot_metric(grid, domains) {
     const METRIC = parseInt(d3.select(".selected").attr("id").slice(-1)) + 3;
+
+    METRIC == 3
+        ? changeLegendText("OFFEN(S/C)E", "DEFEN(S/C)E")
+        : changeLegendText("LOW", "HIGH");
+
     const colorPalette = d3
         .scaleSequential()
         .domain(domains[METRIC])
@@ -405,6 +411,44 @@ function plot_metric(grid, domains) {
         .attr("cx", (d) => d[0])
         .attr("cy", (d) => d[1])
         .attr("fill", (d) => colorPalette(d[METRIC]));
+}
+
+function setupLegend() {
+    const legendBox = d3.select("#legend-wrapper");
+
+    legendBox
+        .append("span")
+        .text("OFFEN(S/C)E ")
+        .attr("class", "legend-text")
+        .attr("id", "legend-text-left");
+
+    const NUM = 50;
+    const colorPalette = d3
+        .scaleSequential()
+        .domain([0, NUM - 1])
+        .interpolator(d3.interpolateRdBu);
+
+    const values = Array(NUM)
+        .fill()
+        .map((x, i) => i);
+    legendBox
+        .selectAll("div")
+        .data(values)
+        .enter()
+        .append("span")
+        .attr("class", "legend-slice")
+        .style("background-color", (d) => colorPalette(d));
+
+    legendBox
+        .append("span")
+        .text(" DEFEN(S/C)E")
+        .attr("class", "legend-text")
+        .attr("id", "legend-text-right");
+}
+
+function changeLegendText(left_text, right_text) {
+    d3.select("#legend-text-left").text(" " + left_text + " ");
+    d3.select("#legend-text-right").text(" " + right_text + " ");
 }
 
 function setup() {
@@ -465,6 +509,7 @@ function setup() {
         setUpPointSet(_.slice(points, 0, color === "blue" ? 5 : 6), color);
     }
     setUpButtons();
+    setupLegend();
 }
 
 setup();
