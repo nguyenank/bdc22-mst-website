@@ -57,6 +57,10 @@ footer {
   justify-content: center;
 }
 
+.small-text {
+  font-size: 0.75rem;
+}
+
 #ice-hockey-svg {
   max-height: 80vh;
 }
