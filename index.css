@@ -27,7 +27,6 @@ body.loading {
 }
 
 #overlay {
-  filter: blur(1.4px);
   opacity: 0.85;
 }
 

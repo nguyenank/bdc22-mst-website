@@ -457,6 +457,7 @@ function setup() {
         .attr("clip-path", "url(#clipBorder)")
         .append("g")
         .attr("id", "overlay")
+        .attr("filter", "url(#f1)")
         .append("g")
         .attr("id", "mst");
     for (const color in all_points) {
