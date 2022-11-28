@@ -398,7 +398,7 @@ function plot_metric(metric, values, domains, puck) {
     const areaControl = metric === 3;
 
     areaControl
-        ? changeLegendText("OFFEN(S/C)E", "DEFEN(S/C)E")
+        ? changeLegendText("DEFEN(S/C)E", "OFFEN(S/C)E")
         : changeLegendText("LOW", "HIGH");
 
     const colorPalette = d3

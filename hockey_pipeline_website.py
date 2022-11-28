@@ -38,7 +38,7 @@ class tracks():
                 puck: int, # column number for which player has the puck
                 off: ArrayLike, # array or list of integers +1 for offence, -1 for defence (or true and false)
                 vp: float = 55,
-                phi_res: float = 0.05,
+                phi_res: float = 0.01,
                 t_res: float = 0.01,
                 # metric: str = 'expected'
                 ):
