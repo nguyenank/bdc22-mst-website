@@ -382,35 +382,57 @@ function run_model() {
     puck_js = _.findIndex(ids, (id) => id == getPuckCarrier());
     off_js = _.map(ids, (id) => (id.slice(0, 1) == "O" ? 1 : -1));
 
-    tracks = pyodide.globals.get("tracks");
-    results = tracks(x_js, y_js, vx_js, vy_js, goalie_js, puck_js, off_js);
-    plot_metric(results.grid.toJs(), results.domains.toJs());
+    metrics = pyodide.globals.get("metrics");
+    results = metrics(x_js, y_js, vx_js, vy_js, goalie_js, puck_js, off_js);
+    const metric = parseInt(d3.select(".selected").attr("id").slice(-1)) + 3;
+    plot_metric(
+        metric,
+        metric === 3 ? results.grid.toJs() : results.triangles.toJs(),
+        results.domains.toJs(),
+        _.find(overall, (a) => a.id == getPuckCarrier())
+    );
     results.destroy();
 }
 
-function plot_metric(grid, domains) {
-    const METRIC = parseInt(d3.select(".selected").attr("id").slice(-1)) + 3;
+function plot_metric(metric, values, domains, puck) {
+    const areaControl = metric === 3;
 
-    METRIC == 3
+    areaControl
         ? changeLegendText("OFFEN(S/C)E", "DEFEN(S/C)E")
         : changeLegendText("LOW", "HIGH");
 
     const colorPalette = d3
         .scaleSequential()
-        .domain(domains[METRIC])
+        .domain(areaControl ? [-1, 1] : domains[metric])
         .interpolator(d3.interpolateRdBu);
+
     d3.select("#transformations").select("#overlay").selectAll("*").remove();
 
-    d3.select("#transformations")
-        .select("#overlay")
-        .selectAll("circle")
-        .data(grid)
-        .enter()
-        .append("circle")
-        .attr("r", "1")
-        .attr("cx", (d) => d[0])
-        .attr("cy", (d) => d[1])
-        .attr("fill", (d) => colorPalette(d[METRIC]));
+    if (areaControl) {
+        d3.select("#transformations")
+            .select("#overlay")
+            .selectAll("circle")
+            .data(values)
+            .enter()
+            .append("circle")
+            .attr("r", "1")
+            .attr("cx", (d) => d[0])
+            .attr("cy", (d) => d[1])
+            .attr("fill", (d) => colorPalette(d[metric]));
+    } else {
+        d3.select("#transformations")
+            .select("#overlay")
+            .selectAll("path")
+            .data(values)
+            .enter()
+            .append("path")
+            .attr(
+                "d",
+                (d) =>
+                    `M ${d[0]} ${d[1]} L ${d[2]} ${d[3]} L ${puck.x} ${puck.y} Z`
+            )
+            .attr("fill", (d) => colorPalette(d[metric]));
+    }
 }
 
 function setupLegend() {

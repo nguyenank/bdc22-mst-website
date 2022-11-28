@@ -38,7 +38,7 @@ class tracks():
                 puck: int, # column number for which player has the puck
                 off: ArrayLike, # array or list of integers +1 for offence, -1 for defence (or true and false)
                 vp: float = 55,
-                phi_res: float = 0.01,
+                phi_res: float = 0.05,
                 t_res: float = 0.01,
                 # metric: str = 'expected'
                 ):
@@ -63,8 +63,8 @@ class tracks():
         # self.grid = np.concatenate([self.one_pass(self, phi)() for phi in np.arange(-np.pi,np.pi+EPS, phi_res)], axis = 0)
         full_grid = [self.one_pass(self, phi)() for phi in np.arange(-np.pi,np.pi+EPS, phi_res)]
         self.grid = np.concatenate([fg['grid'] for fg in full_grid], axis = 0)
-        self.domains = [[min(x), max(x)] for x in self.grid.T]
         self.triangles = np.stack([fg['triangle'] for fg in full_grid], axis = 0)
+        self.domains = [[min(x), max(x)] for x in self.triangles.T]
 
     def player_motion(self, alpha: float = ALPHA, t_r: float = TR, vmax: float = MAX_VEL):
         t = np.arange(self.t_res,MAX_TIME, self.t_res).reshape(-1,1)
