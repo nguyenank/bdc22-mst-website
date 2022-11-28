@@ -431,7 +431,8 @@ function plot_metric(metric, values, domains, puck) {
                 (d) =>
                     `M ${d[0]} ${d[1]} L ${d[2]} ${d[3]} L ${puck.x} ${puck.y} Z`
             )
-            .attr("fill", (d) => colorPalette(d[metric]));
+            .attr("fill", (d) => 'green');
+            // .attr("fill", (d) => colorPalette(d[metric]));
     }
 }
 
